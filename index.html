@@ -15,13 +15,19 @@
 
 	<!-- Custom styles for this template -->
 	<link href="assets/css/carousel.css" rel="stylesheet">
+
+	<style type="text/css">
+		.navbar-brand img {
+			max-width: 50%;
+		}
+	</style>
 <body>
 	<header>
 		<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.html">
-						<img alt="Brand" src="assets/img/logo-horizontal.png" style="width: 60%;">
+						<img alt="Brand" src="assets/img/logo-horizontal.png">
 					</a>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
@@ -55,8 +61,9 @@
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img class="first-slide" src="material/aplicacoes/sala_studio_idea10.jpg" class="img-fluid" alt="First slide">
+				<div class="carousel-item active"
+					style="background-image: url('material/aplicacoes/sala_studio_idea10.jpg');">
+					<!-- <img class="first-slide" class="img-fluid" alt="First slide"> -->
 					<div class="container">
 						<div class="carousel-caption text-left">
 							<h1 class="text-success">Personalize o seu Projeto</h1>
@@ -64,8 +71,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="carousel-item">
-					<img class="second-slide" src="material/aplicacoes/escada_idea10.jpg" class="img-fluid" alt="Second slide">
+				<div class="carousel-item"
+					style="background-image: url('material/aplicacoes/escada_idea10.jpg');">
+					<!-- <img class="second-slide" class="img-fluid" alt="Second slide"> -->
 					<div class="container">
 						<div class="carousel-caption">
 							<h1 class="text-success">Idea10 transforma as suas ideias em realidade</h1>
@@ -73,8 +81,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="carousel-item">
-					<img class="third-slide" src="material/aplicacoes/quarto_cama_tatame_idea10.jpg" class="img-fluid" alt="Third slide">
+				<div class="carousel-item"
+					style="background-image: url('material/aplicacoes/quarto_cama_tatame_idea10.jpg');">
+					<!-- <img class="third-slide" class="img-fluid" alt="Third slide"> -->
 					<div class="container">
 						<div class="carousel-caption text-right">
 							<h1 class="">Agora você pode dar um toque especial e personalizar a sua obra com a impressão certa!.</h1>
@@ -101,19 +110,23 @@
 			<!-- Three columns of text below the carousel -->
 			<div class="row">
 				<div class="col-lg-4">
+<<<<<<< HEAD
 					<img class="rounded-circle" src="/ideia10-site/material/aplicacoes/Untitled-2.jpg" class="img-fluidalt="Generic placeholder image" width="140" height="140">
+=======
+					<img class="rounded-circle" src="material/aplicacoes/Untitled-2.jpg" class="img-fluidalt="Generic placeholder image" width="140" height="140">
+>>>>>>> f7da4da685d16aa130a83a77b2456de6a7d2cacd
 					<h2>Projetos Casa</h2>
 					<p>conteudo.</p>
 					<p><a class="btn btn-secondary" href="#" role="button">mais detalhes &raquo;</a></p>
 				</div><!-- /.col-lg-4 -->
 				<div class="col-lg-4">
-					<img class="rounded-circle" src="http://localhost/ideia10-site/material/aplicacoes/escada_concreto_idea10.jpg"  class="img-fluid alt="Generic placeholder image" width="140" height="140">
+					<img class="rounded-circle" src="material/aplicacoes/escada_concreto_idea10.jpg"  class="img-fluid alt="Generic placeholder image" width="140" height="140">
 					<h2>Projetos Escritorios</h2>
 					<p>conteudo.</p>
 					<p><a class="btn btn-secondary" href="#" role="button">mais detalhes &raquo;</a></p>
 				</div><!-- /.col-lg-4 -->
 				<div class="col-lg-4">
-					<img class="rounded-circle" src="http://localhost/ideia10-site/material/aplicacoes/escada_idea10.jpg" alt="Generic placeholder image" width="140" height="140"> 
+					<img class="rounded-circle" src="material/aplicacoes/escada_idea10.jpg" alt="Generic placeholder image" width="140" height="140"> 
 					<h2>Projetos especiais</h2>
 					<p>conteudo.</p>
 					<p><a class="btn btn-secondary" href="#" role="button">mais detalhes &raquo;</a></p>
@@ -165,10 +178,13 @@
 		<!-- FOOTER -->
 		<footer class="container">
 			<p class="float-right">
-				<a href="#">Back to top</a></p>
-			<p>&copy; 2017 Company, Inc. &middot; 
-				<a href="#">Privacy</a> &middot; 
-				<a href="#">Terms</a></p>
+				<a href="#">Voltar ao topo</a>
+			</p>
+			<p>
+				Designed by SD Marketing Mobile &copy; 2017 Ideia10. &middot; 
+				<a href="#">Política de Privaciade</a> &middot; 
+				<a href="#">Termo de Compromisso</a>
+			</p>
 			<p class="container-fluid">
 				<a href="#"><span class="fa fa-facebook"></span></a>
 				<a href="#"><span class="fa fa-linkedin"></span></a>
@@ -186,5 +202,6 @@
 	<script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="assets/bower_components/holderjs/holder.min.js"></script>
+	<script src="assets/bower_components/instafeed/instafeed.min.js"></script>
 </body>
 </html>
