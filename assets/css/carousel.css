@@ -12,6 +12,10 @@ body {
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
+.navbar-brand img {
+	max-width: 50%;
+}
+
 /* Carousel base class */
 .carousel {
 	margin-bottom: 4rem;
