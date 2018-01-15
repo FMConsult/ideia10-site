@@ -28,7 +28,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="index.html#">INICIO<span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="about.html#">QUEM SOMOS</a>
 					</li>
 					<li class="nav-item">
@@ -40,7 +40,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="simulador.html#">SIMULADOR</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a class="nav-link" href="contact.html#">CONTATO</a>
 					</li>
 				</ul>
@@ -58,36 +58,62 @@
 			<hr class="featurette-divider">
 
 			<div class="row featurette">
-				<div class="col-md-12">
-					<h2 class="featurette-heading" style="margin-top: 0px;">Quem somos? <span class="text-muted">o que fazemos?</span></h2>
-					<p class="lead">Decorar todos os ambientes da casa é algo que exige dedicação e pesquisa, mas personalizar alguns objetos, tornando-os ainda mais parecidos com a sua personalidade, é a aposta da Leroy Merlin Tamboré. A loja, em parceria com o projeto Idea 10, montou um espaço, que além de personalizado, traz exclusividade ao cliente, unindo customização e inovação, com um modelo único no mundo.</p>
+				<div class="col-md-6">
+					<h2 class="featurette-heading" style="margin-top: 0px;">Gostou do resultado?<br><small class="text-muted">Fale com a gente</small></h2>
+					<p class="lead">Nossa equipe de projetos terá um enorme prazer em idealizar junto com você o material adequado e as melhores aplicações para a sua imagem ou paisagem.</p>
 
-					<p class="lead">É possível personalizar a impressão em madeira, aço, porcelanatos, além de azulejos, vidros e MDF. Esses são apenas alguns dos materiais que o cliente pode se interessar na hora de customizar. Os objetos prometem trazer uma nova experiência e estilizar o ambiente da casa com criatividade, exclusividade e inovação. </p>
+					<p class="lead">Preencha o formulário abaixo e um de nossos consultores entrará em contato com você.</p>
 					<p class="lead"></p>
 					<p class="lead"></p>
 				</div>
-			</div>
 
-			<hr class="featurette-divider">
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="control-label">Nome completo:</label>
+								<input class="form-control" ng-model="contact.nome">
+							</div>
+						</div>
+					</div>
 
-			<div class="row featurette">
-				<div class="col-md-7">
-					<h2 class="featurette-heading">Personalização de <span class="text-muted"> produtos criativos.</span></h2>
-					<p class="lead">O processo é feito com uma impressora de grande porte, a Canon Océ Arizona, de modelo AZ460GT, que, atualmente, com a mais alta tecnologia presente no mercado, é capaz de produzir e desenvolver cerca de 40 milhões de imagens. Além das opções existentes,o cliente também pode levar os desenhos que desejar, como uma foto de um familiar, amigo, ídolo ou escolher um dos modelos expostos na loja, que vão de obras de arte a estampas do momento..</p>
-				</div>
-				<div class="col-md-5">
-					<img class="featurette-image img-fluid mx-auto" src="material/aplicacoes/Canon Océ Arizona AZ460GT.jpg" alt="Generic placeholder image">
-				</div>
-			</div>
-			<hr class="featurette-divider">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label">Telefone:</label>
+								<input class="form-control" ng-model="contact.telefone">
+							</div>
+						</div>
 
-			<div class="row featurette">
-				<div class="col-md-7 order-md-2">
-					<h2 class="featurette-heading">Nossa <span class="text-muted">Loja..</span></h2>
-					<p class="lead">A loja, em parceria com o projeto Idea 10, montou um espaço, que além de personalizado, traz exclusividade ao Cliente, unindo customização e inovação, com um modelo único no mundo.</p>
-				</div>
-				<div class="col-md-5 order-md-1">
-					<img class="featurette-image img-fluid mx-auto" src="material/aplicacoes/ideia10-tambore.jpg" alt="Generic placeholder image">
+						<div class="col-md-8">
+							<div class="form-group">
+								<label class="control-label">E-mail:</label>
+								<input class="form-control" ng-model="contact.email">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="control-label">Observações:</label>
+								<textarea class="form-control" ng-model="contact.observacoes" rows="5"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="control-label">&nbsp;</label>
+								<div class="controls">
+									<button type="button" class="btn btn-primary float-right">
+										Enviar
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 

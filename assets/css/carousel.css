@@ -39,6 +39,11 @@ body {
     background-position: center center;
 }
 
+.project-video {
+	text-align: center;
+	background-color: #000;
+}
+
 /*.carousel-item > img {
 	background-repeat: no-repeat;
 	background-size: auto;
