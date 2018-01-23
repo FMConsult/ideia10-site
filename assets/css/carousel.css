@@ -104,3 +104,16 @@ body {
 		margin-top: 7rem;
 	}
 }
+
+.active{
+	border-bottom-style: solid;
+	border-bottom: 5px solid #acff72;
+}
+
+.btn-verde{
+	background-color: #acff72;
+	color: #FFF;
+}
+.nav-cusmom`{
+	padding-bottom: 0px !important;
+}
