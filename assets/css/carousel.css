@@ -112,7 +112,12 @@ body {
 }
 
 .btn-verde{
-	background-color: #acff72;
+	background-color: #acff72 ;
+	color: #FFF;
+}
+
+.cor-verdeclaro{
+	background: #cbff9f !important;
 	color: #FFF;
 }
 .nav-custom{
