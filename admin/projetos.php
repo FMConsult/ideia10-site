@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,9 +11,10 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../assets/bower_components/summernote/dist/summernote.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
 </head>
-<body>
+<body ng-controller="ProjetosController">
 	<header>
 		<nav class="navbar">
 			<h4>IDEA10 ADMIN</h4>
@@ -30,10 +31,6 @@
 			</ul>
 		</nav>
 	</header>
-	<div class="container">
-		
-		
-	</div>	
 
 	<div class="container">
 		<div class="jumbotron jumbotron-fluid">
@@ -42,30 +39,41 @@
 
 				<form class="form">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-8">
 							<div class="form-group">
 								<label class="control-label">Titulo</label>
-								<input class="form-control" type="text">
+								<input class="form-control" type="text" ng-model="projeto.title">
 							</div>
 						</div>
 
-						<div class="col-lg-5">
+						<div class="col-lg-4">
 							<div class="form-group">
 								<label class="control-label">Categoria</label>
-								<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-									<option selected>Choose...</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</select>
+								<div class="input-group">
+									<select class="form-control" 
+										ng-options="category as category.name for category in categories track by category.id" 
+										ng-model="projeto.category"></select>
+									<div class="input-group-append">
+										<button class="btn btn-success" type="button" data-toggle="modal" data-target="#categoryModal">Add</button>
+									</div>
+								</div>
 							</div>
 						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<summernote height="300" ng-model="projeto.text"></summernote>
+						</div>
+					</div>
 
-						<div class="col-lg-1">
+					<div class="row">
+						<div class="col-lg-12">
 							<div class="form-group">
 								<label class="control-label">&nbsp;</label>
 								<div class="controls">
-									<button class="btn btn-primary float-right">Salvar</button>
+									<button class="btn btn-success float-right" ng-click="saveProjeto()">
+										Salvar
+									</button>
 								</div>
 							</div>
 						</div>
@@ -77,39 +85,59 @@
 		<table class="table table-bordered ">
 			<thead class="thead-light">
 				<tr>
-					<th scope="col">DATA</th>
+					<th scope="col">ID</th>
 					<th scope="col">TITULO</th>
 					<th scope="col">CATEGORIA</th>
 					<th scope="col">AÇÕES</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>IMAGEM</td>
-					<td>DATA</td>
-					<td class="text-center"><button type="button" class="btn btn-danger">EXCLUIR</button></td>
+				<tr ng-repeat="item in projects">
+					<th scope="row">{{ item.id }}</th>
+					<td>{{ item.title }}</td>
+					<td>{{ item.category.name }}</td>
+					<td class="text-center">
+						<button type="button" class="btn btn-danger btn-sm"
+							ng-click="deleteProjeto(item)">
+							EXCLUIR
+						</button>
+					</td>
 				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>IMAGEM</td>
-					<td>DATA</td>
-					<td class="text-center"><button type="button" class="btn btn-danger">EXCLUIR</button></td>
-				<tr>
-					<th scope="row">2</th>
-					<td>IMAGEM</td>
-					<td>DATA</td>
-					<td class="text-center"><button type="button" class="btn btn-danger">EXCLUIR</button></td>
-				</tr>
+				
 			</tbody>
 		</table>							
-
-
-		</table>
 		</div>	
 	</div>
 
-
+	<!-- Modal -->
+	<div class="modal" tabindex="-1" role="dialog" id="categoryModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Cadastro de Categorias</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form class="form">
+	        	<div class="row">
+	        		<div class="col-lg-12">
+	        			<div class="form-group">
+	        				<label class="control-label">Nome da Categoria:</label>
+	        				<input class="form-control" ng-model="category.name">
+	        			</div>
+	        		</div>
+	        	</div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	        <button type="button" class="btn btn-success" ng-click="saveCategory()">Adicionar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	
 	<script src="../assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
@@ -117,5 +145,11 @@
 	<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../assets/bower_components/holderjs/holder.min.js"></script>
 	<script src="../assets/bower_components/instafeed/instafeed.min.js"></script>
+	<script src="../assets/bower_components/summernote/dist/summernote.min.js"></script>
+
+	<script src="../assets/bower_components/angular/angular.js"></script>
+	<script src="../assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+	
+	<script src="../assets/js/app.js"></script>
 </body>
 </html>

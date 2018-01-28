@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name=4"viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="../assets/img/logo.png">
@@ -41,14 +41,14 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label class="control-label">Nome do Banner</label>
-								<input class="form-control" type="text">
+								<input class="form-control" type="text" ng-model="banner.title">
 							</div>
 						</div>
 
 						<div class="col-lg-5">
 							<div class="form-group">
 								<label class="control-label">Selecione o Arquivo</label>
-								<input class="form-control" type="file">
+								<input class="form-control" type="file" ng-model="">
 							</div>
 						</div>
 
@@ -56,7 +56,7 @@
 							<div class="form-group">
 								<label class="control-label">&nbsp;</label>
 								<div class="controls">
-									<button class="btn btn-primary float-right">Salvar</button>
+									<button class="btn btn-primary float-right" data-target="#categorymodal">Salvar</button>
 								</div>
 							</div>
 						</div>
@@ -75,28 +75,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>IMAGEM</td>
-					<td>DATA</td>
-					<td class="text-center"><button type="button" class="btn btn-danger">EXCLUIR</button></td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>IMAGEM</td>
-					<td>DATA</td>
-					<td class="text-center"><button type="button" class="btn btn-danger">EXCLUIR</button></td>
-				<tr>
-					<th scope="row">3</th>
-					<td>IMAGEM</td>
-					<td>DATA</td>
-					<td class="text-center"><button type="button" class="btn btn-danger">EXCLUIR</button></td>
+				<tr ng-repeat="item in banners">
+					<th scope="row">{{ item.id }}</th>
+					<td>{{ item.Image.name }}</td>
+					<td>{{ item.data }}</td>
+					<td class="text-center"><button type="button" class="btn btn-danger" ng-click="deleteBanner(item)">
+					EXCLUIR
+					</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>							
-
-
-		</table>
 		</div>	
 	</div>
 
@@ -105,5 +94,7 @@
 	<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../assets/bower_components/holderjs/holder.min.js"></script>
 	<script src="../assets/bower_components/instafeed/instafeed.min.js"></script>
+
+	<script src="../assets/bower_components/angular/angular.js"></script>
 </body>
 </html>
