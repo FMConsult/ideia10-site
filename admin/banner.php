@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="idea10">
+<html lang="pt-br" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
 	<meta name=4"viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

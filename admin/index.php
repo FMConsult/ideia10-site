@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" ng-app="idea10">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +15,7 @@
   <!-- Custom styles for this template -->
   <link href="../assets/css/carousel.css" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="ProjetosController">
   <div class="container">
     <div class="col-md-12">
       <div class="row">
@@ -26,15 +26,18 @@
             </div>
             <h1 class="h3 font-weight-normal text-center">Login</h1>
             <label for="inputEmail" class="sr-only">E-mail</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required="" autofocus="">
-            <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+            <input type="email" id="inputEmail" class="form-control" ng-model="username" placeholder="E-mail" required="" autofocus="">
+            <label for="inputPassword" ng-model="kye.password" class="sr-only">Senha</label>
+            <input type="password" id="inputPassword" class="form-control" ng-model="password" placeholder="Senha" required="">
             <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> Lembrar Senha
               </label>
             </div>
-            <button class="btn btn-lg btn-verde btn-block" type="submit">Entrar</button>
+            <button class="btn btn-lg btn-verde btn-block" ng-click=() type="submit">Entrar</button>
+            <span>{{responseMessage}}</span>
+            <br>
+            <a href="">Forgot your password?</a> 
             <p class="text-muted text-center"><br>© 2017-2018</p>
           </form>
         </div>
@@ -45,6 +48,8 @@
   <script src="../assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
   <script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../assets/bower_components/holderjs/holder.min.js"></script>
-  <script src="../assets/bower_components/instafeed/instafeed.min.js"></script>
+  <script src="../assets/bower_components/instafeed.js/instafeed.min.js"></script>
+
+  <script src="../assets/js/app.js"></script>
 </body>
 </html>

@@ -3,8 +3,29 @@ var idea10App = angular.module('idea10', ['summernote']);
 idea10App.controller('ProjetosController', function($scope, $http){
 	$scope.projeto = {};
 	$scope.category = {};
-idea10App.controller('BannerController', function($scope, $http){
-	$scope.banner = {};
+	$scope.index = {};
+
+	$scope.login = function() {
+		var request = $http({
+			method : "post",
+			url  : "http://localhost:8080/login.php",
+
+			data : {
+				email : $scope.username,
+				password: $scope.password
+			},
+		});
+		request.success(function(data)
+		{
+			if(data == "1"){
+				$scope.responseMessage = "Successfully Logged in";
+			}
+			else{
+				$scope.responseMessage= "Username or Password is invalid"
+			}
+		});
+	}
+ 
 
 	$scope.saveBanner = function() {
 		$http({
