@@ -3,7 +3,7 @@
 /* Padding below the footer and lighter body text */
 
 body {
-	padding-top: 3rem;
+	margin-top: 5rem;
 	padding-bottom: 3rem;
 	color: #5a5a5a;
 }
@@ -103,4 +103,26 @@ body {
 	.featurette-heading {
 		margin-top: 7rem;
 	}
+}
+
+.active{
+	border-bottom-style: solid;
+	border-bottom: 5px solid #acff72;
+	padding-bottom: 15px;
+}
+
+.btn-verde{
+	background-color: #acff72 ;
+	color: #FFF;
+}
+
+.cor-verdeclaro{
+	background: #cbff9f !important;
+	color: #FFF;
+}
+.nav-custom{
+	padding-bottom: 0px !important;
+}
+.nav-custom-div{
+	padding-top: 20px;
 }
