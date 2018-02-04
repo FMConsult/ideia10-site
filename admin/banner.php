@@ -11,9 +11,11 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../assets/bower_components/summernote/dist/summernote.css" rel="stylesheet">
+	<link href="../assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
 </head>
-<body>
+<body ng-controller="BannersController">
 	<header>
 		<nav class="navbar">
 			<h4>IDEA10 ADMIN</h4>
@@ -48,7 +50,7 @@
 						<div class="col-lg-5">
 							<div class="form-group">
 								<label class="control-label">Selecione o Arquivo</label>
-								<input class="form-control" type="file" ng-model="">
+								<input class="form-control" type="file">
 							</div>
 						</div>
 
@@ -56,7 +58,7 @@
 							<div class="form-group">
 								<label class="control-label">&nbsp;</label>
 								<div class="controls">
-									<button class="btn btn-primary float-right" data-target="#categorymodal">Salvar</button>
+									<button class="btn btn-success float-right">Salvar</button>
 								</div>
 							</div>
 						</div>
@@ -93,8 +95,12 @@
 	<script src="../assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../assets/bower_components/holderjs/holder.min.js"></script>
-	<script src="../assets/bower_components/instafeed/instafeed.min.js"></script>
+	<script src="../assets/bower_components/instafeed.js/instafeed.min.js"></script>
+	<script src="../assets/bower_components/summernote/dist/summernote.min.js"></script>
 
 	<script src="../assets/bower_components/angular/angular.js"></script>
+	<script src="../assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+	
+	<script src="../assets/js/app.js"></script>
 </body>
 </html>

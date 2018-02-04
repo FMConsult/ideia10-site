@@ -1,0 +1,45 @@
+[
+	{
+		"name": "Cerâmica",
+		"image": "assets/img/material/ceramica.png"
+	},{
+		"name": "Metal",
+		"image": "assets/img/material/metal.jpg"
+	},{
+		"name": "Painel de Espelho",
+		"image": "assets/img/material/painel_espelho.jpg"
+	},{
+		"name": "Painel de Madeira Teca",
+		"image": "assets/img/material/painel_madeira_teca.jpg"
+	},{
+		"name": "Painel de MDF",
+		"image": "assets/img/material/painel_mdf.jpg"
+	},{
+		"name": "Painel Pinus",
+		"image": "assets/img/material/painel_pinus.jpg"
+	},{
+		"name": "Papel de Parede",
+		"image": "assets/img/material/papel_parede.jpg"
+	},{
+		"name": "Plastilha de Cerâmica",
+		"image": "assets/img/material/pastilha_ceramica.jpg"
+	},{
+		"name": "Persiana",
+		"image": "assets/img/material/persiana.png"
+	},{
+		"name": "Azulejo de Piscina",
+		"image": "assets/img/material/piscina.jpg"
+	},{
+		"name": "Plástico",
+		"image": "assets/img/material/plastico.jpg"
+	},{
+		"name": "Porcelanato",
+		"image": "assets/img/material/porcelanato.png"
+	},{
+		"name": "Porta",
+		"image": "assets/img/material/porta.png"
+	},{
+		"name": "Vidro",
+		"image": "assets/img/material/vidro.png"
+	}
+]

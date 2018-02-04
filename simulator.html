@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,15 +11,17 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
 	<link href="assets/css/carousel.css" rel="stylesheet">
+	<link href="assets/css/wizard.css" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="SimulatorController">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-custom">
 			<a  href="#">
-				<img alt="Brand" style="width: 225px;" class="d-inline-block align-top" src="assets/img/logo-horizontal.png">
+				<img class="d-inline-block align-top brand-logo" src="assets/img/logo-horizontal.png">
 			</a>
 			<button class="navbar-toggler" type="button" 
 				data-toggle="collapse" data-target="#navbarSupportedContent" 
@@ -52,60 +54,174 @@
 			</div>
 		</nav>
 	</header>
-		<!-- Marketing messaging and featurettes
-		================================================== -->
-		<!-- Wrap the rest of the page in another container to center all the content. -->
-		<div class="container">
-			<h1>Simulador de Projetos</h1>
+	
+	<div class="container pt-5">
+		<div class="row">
+			<div class="col-lg-12">
+				<section>
+					<div class="wizard">
+						<ul class="nav nav-wizard">
+							<li ng-class="{'active':(step == 1)}">
+								<a href="#step1" data-toggle="tab" ng-click="step = 1;">Escolha o material</a>
+							</li>
+							<li ng-class="{'active':(step == 2)}">
+								<a href="#step2" data-toggle="tab" ng-click="step = 2;">Escolha a dimensão</a>
+							</li>
+							<li ng-class="{'active':(step == 3)}">
+								<a href="#step3" data-toggle="tab" ng-click="step = 3;">Escolha a imagem</a>
+							</li>
+							<li ng-class="{'active':(step == 4)}">
+								<a href="#step4" data-toggle="tab" ng-click="step = 4;">Imprimir orçamento</a>
+							</li>
+						</ul>
+						<form>
+							<div class="tab-content">
+								<div class="tab-pane" id="step1"
+									ng-class="{'active':(step == 1)}">
+									<div class="container">
+										<h3 class="text-success mt-5 mb-5">
+											<span class="badge badge-pill badge-success">1</span>
+											Escolha o Material que deseja utilizar:
+										</h3>
 
-			<hr>
+										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;">
+											<div class="col-sm-3" ng-repeat="material in materials">
+												<div class="card border border-{{ (material.selected) ? 'primary' : 'default' }} mb-5"
+													ng-click="selectMaterial(material)">
+													<img class="card-img-top" src="{{ material.image }}" style="min-height: 245.5px;">
+													<div class="card-body mt-5 p-0">
+														<h5 class="card-title text-center">{{ material.name }}</h5>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
-			<div class="row mt-5 mb-5">
-				<div class="col-md-12 text-center">
-					<div class="btn-group" role="group" aria-label="Basic example">
-						<div class="btn-group" role="group">
-							<button id="btnGroupDrop1" type="button" 
-								class="btn btn-verde dropdown-toggle" 
-								data-toggle="dropdown" 
-								aria-haspopup="true" aria-expanded="false">
-								Quadros
-							</button>
-							<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-								<a class="dropdown-item" href="#">Aço</a>
-								<a class="dropdown-item" href="#">Vidro</a>
-								<a class="dropdown-item" href="#">Espelho</a>
-								<a class="dropdown-item" href="#">Laminado</a>
+								<div class="tab-pane" id="step2"
+									ng-class="{'active':(step == 2)}">
+									<div class="container">
+										<div class="row">
+											<div class="col-sm-6">
+												<h4 class="text-success mt-5 mb-5">
+													<span class="badge badge-pill badge-success">2</span>
+													Qual o tamanho do(a) {{ budget.material.name }}:
+												</h3>
+
+												<div class="row">
+													<div class="col-sm-3">
+														<div class="form-group">
+															<label class="control-label">Altura (m)</label>
+															<input type="text" class="form-control text-right" ui-number-mask="0"
+																ng-keyup="calculateTotalDimension('material')"
+																ng-model="budget.material.dimensions.height">
+														</div>
+													</div>
+
+													<div class="col-sm-3">
+														<div class="form-group">
+															<label class="control-label">Largura (m)</label>
+															<input type="text" class="form-control text-right" ui-number-mask="0"
+																ng-keyup="calculateTotalDimension('material')"
+																ng-model="budget.material.dimensions.width">
+														</div>
+													</div>
+
+													<div class="col-sm-3">
+														<div class="form-group">
+															<label class="control-label">Dimensão (m²)</label>
+															<input class="form-control text-right" disabled="disabled" 
+																value="{{ budget.material.dimensions.total | NumberFormat : 0 : ',' : '.' }}">
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-sm-6">
+												<h4 class="text-success mt-5 mb-5">
+													<span class="badge badge-pill badge-success">3</span>
+													Informe a área de instalação:
+												</h3>
+
+												<div class="row">
+													<div class="col-sm-3">
+														<div class="form-group">
+															<label class="control-label">Altura (m)</label>
+															<input type="text" class="form-control text-right" ui-number-mask="0"
+																ng-keyup="calculateTotalDimension('local')"
+																ng-model="budget.local.dimensions.height">
+														</div>
+													</div>
+
+													<div class="col-sm-3">
+														<div class="form-group">
+															<label class="control-label">Largura (m)</label>
+															<input type="text" class="form-control text-right" ui-number-mask="0"
+																ng-keyup="calculateTotalDimension('local')"
+																ng-model="budget.local.dimensions.width">
+														</div>
+													</div>
+
+													<div class="col-sm-3">
+														<div class="form-group">
+															<label class="control-label">Dimensão (m²)</label>
+															<input class="form-control text-right" disabled="disabled" 
+																value="{{ budget.local.dimensions.total | NumberFormat : 0 : ',' : '.' }}">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row mt-5">
+											<div class="col-sm-12">
+												<button class="btn btn-success float-right"
+													ng-click="goToSelectImage()">
+													Escolher a imagem <i class="fa fa-angle-double-right"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane" id="step3"
+									ng-class="{'active':(step == 3)}">
+									<div class="container">
+										<h3 class="text-success mt-5 mb-5">
+											<span class="badge badge-pill badge-success">1</span>
+											Escolha uma categoria de imagens que deseja utilizar:
+										</h3>
+
+										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;">
+											<div class="col-sm-3" ng-repeat="category in image_categories">
+												<div class="card border border-{{ (category.selected) ? 'primary' : 'default' }} mb-5">
+													<img class="card-img-top" src="{{ category.thumbnail }}" style="min-height: 245.5px;">
+													<div class="card-body mt-5 p-0">
+														<h5 class="card-title text-center">{{ category.name }}</h5>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane" id="step4"
+									ng-class="{'active':(step == 4)}">
+									<h3>Complete</h3>
+									<p>You have successfully completed all steps.</p>
+								</div>
+
+								<div class="clearfix"></div>
 							</div>
-						</div>
-						<div class="btn-group" role="group">
-							<button id="btnGroupDrop1" type="button" 
-								class="btn btn-verde dropdown-toggle" 
-								data-toggle="dropdown" 
-								aria-haspopup="true" aria-expanded="false">
-								Murais
-							</button>
-							<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-								<a class="dropdown-item" href="#">Porcelanato</a>
-								<a class="dropdown-item" href="#">Pastilhas</a>
-								<a class="dropdown-item" href="#">Azulejo</a>
-							</div>
-						</div>
+						</form>
 					</div>
-				</div>
+				</section>
+			</div>
 		</div>
-		<div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>				
-		</div>
-			
-		<!-- FOOTER -->
-		<footer class="container mt-5">
+	</div>
+	
+	<footer class="mt-5">
+		<div class="container">
 			<p class="float-right">
 				<a href="#">Voltar ao topo</a>
 			</p>
@@ -119,17 +235,23 @@
 				<a href="#"><span class="fa fa-linkedin"></span></a>
 				<a href="#"><span class="fa fa-youtube"></span></a>
 				<a href="#"><span class="fa fa-skype"></span></a>
-			</p>							
-		</footer>
+			</p>
+		</div>						
+	</footer>
 
-	</main>
+	<script src="assets/js/extras.js"></script>
 
-	<!-- Bootstrap core JavaScript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
+	<script src="assets/bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
 	<script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="assets/bower_components/holderjs/holder.min.js"></script>
+	<script src="assets/bower_components/underscore/underscore-min.js"></script>
+
+	<script src="assets/bower_components/angular/angular.js"></script>
+	<script src="assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+	<script src="assets/bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+	
+	<script src="assets/js/app.js"></script>
 </body>
 </html>

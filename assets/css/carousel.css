@@ -105,7 +105,7 @@ body {
 	}
 }
 
-.active{
+.nav-item.active{
 	border-bottom-style: solid;
 	border-bottom: 5px solid #acff72;
 	padding-bottom: 15px;
@@ -124,5 +124,24 @@ body {
 	padding-bottom: 0px !important;
 }
 .nav-custom-div{
-	padding-top: 20px;
+	padding-top: 35px;
+}
+
+.brand-logo {
+	width: 200px;
+	padding: 25px;
+}
+
+footer {
+   height:100px;
+   width:100%;
+   background-color: #989898;
+   color: #fff;
+   padding: 15px;
+}
+
+/* IE 6 */
+* html footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
 }

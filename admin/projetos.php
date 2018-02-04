@@ -12,6 +12,7 @@
 	<!-- Bootstrap core CSS -->
 	<link href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../assets/bower_components/summernote/dist/summernote.css" rel="stylesheet">
+	<link href="../assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
 </head>
 <body ng-controller="ProjetosController">
@@ -54,12 +55,15 @@
 										ng-options="category as category.name for category in categories track by category.id" 
 										ng-model="projeto.category"></select>
 									<div class="input-group-append">
-										<button class="btn btn-success" type="button" data-toggle="modal" data-target="#categoryModal">Add</button>
+										<button class="btn btn-success" type="button" data-toggle="modal" data-target="#categoryModal">
+											<i class="fa fa-plus-circle"></i>
+										</button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
 					<div class="row">
 						<div class="col-lg-12">
 							<summernote height="300" ng-model="projeto.text"></summernote>
@@ -139,12 +143,11 @@
 	  </div>
 	</div>
 
-	
 	<script src="../assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
 	<script src="../assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../assets/bower_components/holderjs/holder.min.js"></script>
-	<script src="../assets/bower_components/instafeed/instafeed.min.js"></script>
+	<script src="../assets/bower_components/instafeed.js/instafeed.min.js"></script>
 	<script src="../assets/bower_components/summernote/dist/summernote.min.js"></script>
 
 	<script src="../assets/bower_components/angular/angular.js"></script>

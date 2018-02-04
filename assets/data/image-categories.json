@@ -1,0 +1,162 @@
+[
+	{
+		"name": "Abstrato",
+		"thumbnail": "assets/img/setor/abstrato.jpg",
+		"images": [
+			{
+
+				"code": "502259772",
+				"path": "assets/img/produto/502259772.jpg"
+			}
+		]
+	},{
+		"name": "Animais",
+		"thumbnail": "assets/img/setor/animais.jpg",
+		"images": [
+			{
+
+				"code": "460504349",
+				"path": "assets/img/produto/460504349.jpg"
+			},{
+
+				"code": "487597060",
+				"path": "assets/img/produto/487597060.jpg"
+			}
+		]
+	},{
+		"name": "Bar",
+		"thumbnail": "assets/img/setor/bar.jpg",
+		"images": [
+			{
+
+				"code": "146767287",
+				"path": "assets/img/produto/146767287.jpg"
+			},{
+
+				"code": "475407509",
+				"path": "assets/img/produto/475407509.jpg"
+			}
+		]
+	},{
+		"name": "Carros",
+		"thumbnail": "assets/img/setor/carro.jpg",
+		"images": [
+			{
+
+				"code": "180469523",
+				"path": "assets/img/produto/180469523.jpg"
+			},{
+
+				"code": "104658811",
+				"path": "assets/img/produto/104658811.jpg"
+			},{
+
+				"code": "123086093",
+				"path": "assets/img/produto/123086093.jpg"
+			},{
+
+				"code": "138165650",
+				"path": "assets/img/produto/1138165650.jpg"
+			}
+		]
+	},{
+		"name": "Gourmet",
+		"thumbnail": "assets/img/setor/gourmet.jpg",
+		"images": [
+			{
+				"code": "133778618",
+				"path": "assets/img/produto/133778618.jpg"
+			}
+		]
+	},{
+		"name": "Churrasco",
+		"thumbnail": "assets/img/setor/churrasco.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Cidade",
+		"thumbnail": "assets/img/setor/cidade.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Conceitual",
+		"thumbnail": "assets/img/setor/conceitual.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Esportse",
+		"thumbnail": "assets/img/setor/esporte.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Ilustração",
+		"thumbnail": "assets/img/setor/ilustracao.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Moto",
+		"thumbnail": "assets/img/setor/moto.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Noturna",
+		"thumbnail": "assets/img/setor/noturna.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Paisagens",
+		"thumbnail": "assets/img/setor/paisagem.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	},{
+		"name": "Retro",
+		"thumbnail": "assets/img/setor/retro.jpg",
+		"images": [
+			{
+
+				"code": "",
+				"path": "assets/img/produto/.jpg"
+			}
+		]
+	}
+]

@@ -52,82 +52,76 @@
 			</div>
 		</nav>
 	</header>
+		
+	<div class="container marketing">
+		<!-- START THE FEATURETTES -->
+		<hr class="featurette-divider">
 
-	<main role="main">
-		<!-- Marketing messaging and featurettes
-		================================================== -->
-		<!-- Wrap the rest of the page in another container to center all the content. -->
+		<div class="row featurette">
+			<div class="col-md-6">
+				<h2 class="featurette-heading" style="margin-top: 0px;">Gostou do resultado?<br><small class="text-muted">Fale com a gente</small></h2>
+				<p class="lead">Nossa equipe de projetos terá um enorme prazer em idealizar junto com você o material adequado e as melhores aplicações para a sua imagem ou paisagem.</p>
 
-		<div class="container marketing">
-			<!-- START THE FEATURETTES -->
-			<hr class="featurette-divider">
+				<p class="lead">Preencha o formulário abaixo e um de nossos consultores entrará em contato com você.</p>
+				<p class="lead"></p>
+				<p class="lead"></p>
+			</div>
 
-			<div class="row featurette">
-				<div class="col-md-6">
-					<h2 class="featurette-heading" style="margin-top: 0px;">Gostou do resultado?<br><small class="text-muted">Fale com a gente</small></h2>
-					<p class="lead">Nossa equipe de projetos terá um enorme prazer em idealizar junto com você o material adequado e as melhores aplicações para a sua imagem ou paisagem.</p>
-
-					<p class="lead">Preencha o formulário abaixo e um de nossos consultores entrará em contato com você.</p>
-					<p class="lead"></p>
-					<p class="lead"></p>
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label">Nome completo:</label>
+							<input class="form-control" ng-model="contact.nome">
+						</div>
+					</div>
 				</div>
 
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label class="control-label">Nome completo:</label>
-								<input class="form-control" ng-model="contact.nome">
-							</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label">Telefone:</label>
+							<input class="form-control" ng-model="contact.telefone">
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="control-label">Telefone:</label>
-								<input class="form-control" ng-model="contact.telefone">
-							</div>
-						</div>
-
-						<div class="col-md-8">
-							<div class="form-group">
-								<label class="control-label">E-mail:</label>
-								<input class="form-control" ng-model="contact.email">
-							</div>
+					<div class="col-md-8">
+						<div class="form-group">
+							<label class="control-label">E-mail:</label>
+							<input class="form-control" ng-model="contact.email">
 						</div>
 					</div>
+				</div>
 
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label class="control-label">Observações:</label>
-								<textarea class="form-control" ng-model="contact.observacoes" rows="5"></textarea>
-							</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label">Observações:</label>
+							<textarea class="form-control" ng-model="contact.observacoes" rows="5"></textarea>
 						</div>
 					</div>
+				</div>
 
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label class="control-label">&nbsp;</label>
-								<div class="controls">
-									<button type="button" class="btn btn-primary float-right">
-										Enviar
-									</button>
-								</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label">&nbsp;</label>
+							<div class="controls">
+								<button type="button" class="btn btn-primary float-right">
+									Enviar
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<!-- /END THE FEATURETTES -->
-		</div><!-- /.container -->
+		<!-- /END THE FEATURETTES -->
+	</div>
 
-
-		<!-- FOOTER -->
-		<footer class="container mt-5">
+	<footer class="mt-5">
+		<div class="container">
 			<p class="float-right">
 				<a href="#">Voltar ao topo</a>
 			</p>
@@ -141,14 +135,10 @@
 				<a href="#"><span class="fa fa-linkedin"></span></a>
 				<a href="#"><span class="fa fa-youtube"></span></a>
 				<a href="#"><span class="fa fa-skype"></span></a>
-			</p>							
-		</footer>
+			</p>
+		</div>						
+	</footer>
 
-	</main>
-
-	<!-- Bootstrap core JavaScript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
 	<script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
