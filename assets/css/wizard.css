@@ -34,7 +34,7 @@ ul.nav-wizard li {
   line-height: 46px;
 }
 ul.nav-wizard li a {
-  color: #428bca;
+  color: #2ca744;
   padding: 0;
 }
 ul.nav-wizard li a:hover {
@@ -63,18 +63,18 @@ ul.nav-wizard li:after {
   right: -15px;
 }
 ul.nav-wizard li.active {
-  color: #3a87ad;
-  background: #dedede;
+  color: #fff;
+  background: #2ca744;
 }
 ul.nav-wizard li.active:after {
-  border-left: 16px solid #dedede;
+  border-left: 16px solid #2ca744;
 }
 ul.nav-wizard li.active a,
 ul.nav-wizard li.active a:active,
 ul.nav-wizard li.active a:visited,
 ul.nav-wizard li.active a:focus {
-  color: #989898;
-  background: #dedede;
+  color: #fff;
+  background: #2ca744;
 }
 ul.nav-wizard .active ~ li {
   color: #999999;

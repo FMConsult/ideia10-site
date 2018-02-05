@@ -284,8 +284,19 @@ app.controller('SimulatorController', function($scope, $http) {
 		}
 
 		$scope.step = 3;
-		loadImageCategories();
+	}
+
+	$scope.selectImage = function(image) {
+		angular.forEach($scope.budget.category.images, function(_image){
+			_image.selected = false;
+		});
+		// select specified item
+		image.selected = true;
+		$scope.budget.image = image;
+		// move to next step
+		$scope.step = 4;
 	}
 
 	loadMaterials();
+	loadImageCategories();
 });

@@ -71,7 +71,7 @@
 								<a href="#step3" data-toggle="tab" ng-click="step = 3;">Escolha a imagem</a>
 							</li>
 							<li ng-class="{'active':(step == 4)}">
-								<a href="#step4" data-toggle="tab" ng-click="step = 4;">Imprimir orçamento</a>
+								<a href="#step4" data-toggle="tab" ng-click="step = 4;">Visualizar orçamento</a>
 							</li>
 						</ul>
 						<form>
@@ -84,12 +84,12 @@
 											Escolha o Material que deseja utilizar:
 										</h3>
 
-										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;">
+										<div class="row" style="height: 600px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;">
 											<div class="col-sm-3" ng-repeat="material in materials">
-												<div class="card border border-{{ (material.selected) ? 'primary' : 'default' }} mb-5"
+												<div class="card border border-{{ (material.selected) ? 'success' : 'default' }} mb-5"
 													ng-click="selectMaterial(material)">
 													<img class="card-img-top" src="{{ material.image }}" style="min-height: 245.5px;">
-													<div class="card-body mt-5 p-0">
+													<div class="card-body mt-2 p-0">
 														<h5 class="card-title text-center">{{ material.name }}</h5>
 													</div>
 												</div>
@@ -112,7 +112,7 @@
 													<div class="col-sm-3">
 														<div class="form-group">
 															<label class="control-label">Altura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="0"
+															<input type="text" class="form-control text-right" ui-number-mask="2"
 																ng-keyup="calculateTotalDimension('material')"
 																ng-model="budget.material.dimensions.height">
 														</div>
@@ -121,7 +121,7 @@
 													<div class="col-sm-3">
 														<div class="form-group">
 															<label class="control-label">Largura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="0"
+															<input type="text" class="form-control text-right" ui-number-mask="2"
 																ng-keyup="calculateTotalDimension('material')"
 																ng-model="budget.material.dimensions.width">
 														</div>
@@ -131,7 +131,7 @@
 														<div class="form-group">
 															<label class="control-label">Dimensão (m²)</label>
 															<input class="form-control text-right" disabled="disabled" 
-																value="{{ budget.material.dimensions.total | NumberFormat : 0 : ',' : '.' }}">
+																value="{{ budget.material.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
 														</div>
 													</div>
 												</div>
@@ -147,7 +147,7 @@
 													<div class="col-sm-3">
 														<div class="form-group">
 															<label class="control-label">Altura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="0"
+															<input type="text" class="form-control text-right" ui-number-mask="2"
 																ng-keyup="calculateTotalDimension('local')"
 																ng-model="budget.local.dimensions.height">
 														</div>
@@ -156,7 +156,7 @@
 													<div class="col-sm-3">
 														<div class="form-group">
 															<label class="control-label">Largura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="0"
+															<input type="text" class="form-control text-right" ui-number-mask="2"
 																ng-keyup="calculateTotalDimension('local')"
 																ng-model="budget.local.dimensions.width">
 														</div>
@@ -166,10 +166,17 @@
 														<div class="form-group">
 															<label class="control-label">Dimensão (m²)</label>
 															<input class="form-control text-right" disabled="disabled" 
-																value="{{ budget.local.dimensions.total | NumberFormat : 0 : ',' : '.' }}">
+																value="{{ budget.local.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
 														</div>
 													</div>
 												</div>
+											</div>
+										</div>
+
+										<div class="row"
+											ng-if="(budget.local.dimensions.total / budget.material.dimensions.total) > 0">
+											<div class="col-sm-12">
+												<span>{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }} unidades necessárias de {{ budget.material.name }}</span>
 											</div>
 										</div>
 
@@ -187,18 +194,46 @@
 								<div class="tab-pane" id="step3"
 									ng-class="{'active':(step == 3)}">
 									<div class="container">
-										<h3 class="text-success mt-5 mb-5">
-											<span class="badge badge-pill badge-success">1</span>
+										<h3 class="text-success mt-5 mb-5" ng-if="(!budget.category)">
+											<span class="badge badge-pill badge-success">4</span>
 											Escolha uma categoria de imagens que deseja utilizar:
 										</h3>
 
-										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;">
+										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
+											ng-if="(!budget.category)">
 											<div class="col-sm-3" ng-repeat="category in image_categories">
-												<div class="card border border-{{ (category.selected) ? 'primary' : 'default' }} mb-5">
-													<img class="card-img-top" src="{{ category.thumbnail }}" style="min-height: 245.5px;">
-													<div class="card-body mt-5 p-0">
+												<div class="card border border-{{ (budget.category) ? 'primary' : 'default' }} mb-5"
+													ng-click="budget.category = category">
+													<div class="card-img-top" style="background-image: url('{{ category.thumbnail }}');"></div>
+													<div class="card-body mt-2 p-0">
 														<h5 class="card-title text-center">{{ category.name }}</h5>
 													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row mt-5 mb-5" ng-if="(budget.category)">
+											<div class="col-sm-8">
+												<h3 class="text-success">
+													<span class="badge badge-pill badge-success">5</span>
+													Escolha a imagem que deseja utilizar:
+												</h3>
+											</div>
+											<div class="col-sm-4 text-right">
+												<button class="btn btn-secondary"
+													ng-click="budget.category = null;">
+													<i class="fa fa-angle-double-left"></i>
+													Voltar
+												</button>
+											</div>
+										</div>
+
+										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
+										 	ng-if="(budget.category)">
+											<div class="col-sm-3" ng-repeat="image in budget.category.images"
+												ng-click="selectImage(image)">
+												<div class="card border border-{{ (image.selected) ? 'success' : 'default' }} mb-5">
+													<div class="card-img-top" style="background-image: url('{{ image.path }}');"></div>
 												</div>
 											</div>
 										</div>
@@ -207,8 +242,56 @@
 
 								<div class="tab-pane" id="step4"
 									ng-class="{'active':(step == 4)}">
-									<h3>Complete</h3>
-									<p>You have successfully completed all steps.</p>
+									<h3 class="text-success mt-5 mb-5">
+										<span class="badge badge-pill badge-success">6</span>
+										Confira seu orçamento:
+									</h3>
+
+									<div class="row">
+										<div class="col-sm-5">
+											<div class="card border border-success">
+												<div class="card-img-top" style="background-image: url('{{ budget.image.path }}');"></div>
+											</div>
+										</div>
+
+										<div class="col-sm-7">
+											<div class="row">
+												<div class="col-sm-6">
+													<label class="control-label"><strong>Material de Aplicação</strong></label>
+													<input class="form-control" disabled="disabled" 
+														value="{{ budget.material.name }}">
+												</div>
+
+												<div class="col-sm-6">
+													<label class="control-label"><strong>Tamanho do Material</strong></label>
+													<input class="form-control" disabled="disabled" 
+														value="{{ budget.material.dimensions.height }}m x {{ budget.material.dimensions.width }}m">
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<label class="control-label"><strong>Área de Aplicação</strong></label>
+													<input class="form-control" disabled="disabled" 
+														value="{{ budget.local.dimensions.height }}m x {{ budget.local.dimensions.width }}m">
+												</div>
+
+												<div class="col-sm-6">
+													<label class="control-label"><strong>Unidades necessárias p/ aplicação</strong></label>
+													<input class="form-control" disabled="disabled" 
+														value="{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }}">
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-12">
+													<label class="control-label"><strong>Imagem escolhida</strong></label>
+													<input class="form-control" disabled="disabled" 
+														value="#{{ budget.image.code }} ({{ budget.category.name }})">
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 
 								<div class="clearfix"></div>
