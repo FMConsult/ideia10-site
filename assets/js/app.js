@@ -233,6 +233,20 @@ app.controller('SimulatorController', function($scope, $http) {
 		});
 	}
 
+	$scope.actual_page = 0;
+
+	$scope.loadImagesByGettyImagesAPI = function(){
+		$http({
+			method: 'GET',
+			headers: {
+				'Api-Key': 'ptpxjnvsct7mbcyy8ru75rz6'
+			},
+			url: 'https://api.gettyimages.com/v3/search/images?page='+ ($scope.actual_page + 1) +'&page_size=10&phrase='+ $scope.budget.phrase
+		}).then(function(response) {
+			$scope.images = Array.concat(response.data);
+		});
+	}
+
 	function loadImageCategories(){
 		$http({
 			method: 'GET',

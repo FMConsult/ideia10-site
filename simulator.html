@@ -140,7 +140,7 @@
 											<div class="col-sm-6">
 												<h4 class="text-success mt-5 mb-5">
 													<span class="badge badge-pill badge-success">3</span>
-													Informe a área de instalação:
+													Informe a área de impressão:
 												</h3>
 
 												<div class="row">
@@ -194,6 +194,22 @@
 								<div class="tab-pane" id="step3"
 									ng-class="{'active':(step == 3)}">
 									<div class="container">
+										<!--<div class="form-group">
+											<label class="control-label">Pesquisa de imagens</label>
+											<input class="form-control" ng-model="budget.phrase">
+										</div>
+
+										<div class="form-group">
+											<label class="control-label"></label>
+											<div class="controls">
+												<button class="btn btn-primary" ng-click="loadImagesByGettyImagesAPI()">
+													<i class="fa fa-search"></i> Pesquisar
+												</button>
+											</div>
+										</div>
+
+										<pre>{{ images | json }}</pre>-->
+
 										<h3 class="text-success mt-5 mb-5" ng-if="(!budget.category)">
 											<span class="badge badge-pill badge-success">4</span>
 											Escolha uma categoria de imagens que deseja utilizar:
