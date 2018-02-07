@@ -490,6 +490,7 @@ app.controller('SimulatorController', function($scope, $http) {
 		else {
 			$scope.budget.image.origin = 'getty_images';
 			$scope.budget.image.path = image.display_sizes[0].uri;
+			$scope.budget.image.code = image.id;
 		}
 
 		// move to next step
