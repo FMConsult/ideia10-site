@@ -252,7 +252,8 @@
 														<div class="form-check" ng-repeat="(index, orientation) in getty_images.search_options.orientations">
 															<input class="form-check-input" type="checkbox" id="cb-orientation-{{ index }}"
 																ng-model="orientation.selected"
-																ng-checked="orientation.selected">
+																ng-checked="orientation.selected"
+																ng-change="loadImagesByGettyImagesAPI()">
 															<label class="form-check-label" for="cb-orientation-{{ index }}">
 																{{ orientation.label }}
 															</label>
@@ -268,7 +269,8 @@
 														<div class="form-check" ng-repeat="(index, nop) in getty_images.search_options.number_of_people">
 															<input class="form-check-input" type="checkbox" id="cb-nop-{{ index }}"
 																ng-model="nop.selected"
-																ng-checked="nop.selected">
+																ng-checked="nop.selected"
+																ng-change="loadImagesByGettyImagesAPI()">
 															<label class="form-check-label" for="cb-nop-{{ index }}">
 																{{ nop.label }}
 															</label>
@@ -284,7 +286,8 @@
 														<div class="form-check" ng-repeat="(index, composition) in getty_images.search_options.compositions">
 															<input class="form-check-input" type="checkbox" id="cb-composition-{{ index }}"
 																ng-model="composition.selected"
-																ng-checked="composition.selected">
+																ng-checked="composition.selected"
+																ng-change="loadImagesByGettyImagesAPI()">
 															<label class="form-check-label" for="cb-composition-{{ index }}">
 																{{ composition.label }}
 															</label>
@@ -453,6 +456,12 @@
 													value="R$ {{ (budget.material.cost * budget.local.dimensions.total) | NumberFormat : 2 : ',' : '.' }}">
 											</div>
 										</div>
+									</div>
+								</div>
+
+								<div class="row mt-5">
+									<div class="col-sm-12">
+										<p class="alert alert-warning"><strong>Atenção!</strong><br>Este simulador contempla o valor a ser cobrado pela impressão e apenas uma estimativa dos valores relativos aos materiais.<br>Os valores corretos deverão ser apurados junto aos vendedores da Leroy Merlin.<br>Não está incluso a Mão de Obra para instalação do Material Impresso.</p>
 									</div>
 								</div>
 
