@@ -13,5 +13,5 @@ function isEmpty(vlr, zero){
 }
 
 function baseUrlApi(){
-  return location.protocol +"//"+ location.hostname + ":8080/";
+  return 'http://186.226.56.5:1111/';
 }
