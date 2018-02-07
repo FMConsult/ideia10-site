@@ -55,7 +55,7 @@
 		</nav>
 	</header>
 	
-	<div class="container pt-5">
+	<div class="container pt-5 mb-5">
 		<div class="row">
 			<div class="col-lg-12">
 				<section>
@@ -73,250 +73,531 @@
 							<li ng-class="{'active':(step == 4)}">
 								<a href="#step4" data-toggle="tab" ng-click="step = 4;">Visualizar orçamento</a>
 							</li>
+							<li ng-class="{'active':(step == 5)}">
+								<a href="#step5" data-toggle="tab" ng-click="step = 5;">Confirmação do pedido</a>
+							</li>
 						</ul>
-						<form>
-							<div class="tab-content">
-								<div class="tab-pane" id="step1"
-									ng-class="{'active':(step == 1)}">
-									<div class="container">
-										<h3 class="text-success mt-5 mb-5">
-											<span class="badge badge-pill badge-success">1</span>
-											Escolha o Material que deseja utilizar:
-										</h3>
-
-										<div class="row" style="height: 600px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;">
-											<div class="col-sm-3" ng-repeat="material in materials">
-												<div class="card border border-{{ (material.selected) ? 'success' : 'default' }} mb-5"
-													ng-click="selectMaterial(material)">
-													<img class="card-img-top" src="{{ material.image }}" style="min-height: 245.5px;">
-													<div class="card-body mt-2 p-0">
-														<h5 class="card-title text-center">{{ material.name }}</h5>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="tab-pane" id="step2"
-									ng-class="{'active':(step == 2)}">
-									<div class="container">
-										<div class="row">
-											<div class="col-sm-6">
-												<h4 class="text-success mt-5 mb-5">
-													<span class="badge badge-pill badge-success">2</span>
-													Qual o tamanho do(a) {{ budget.material.name }}:
-												</h3>
-
-												<div class="row">
-													<div class="col-sm-3">
-														<div class="form-group">
-															<label class="control-label">Altura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="2"
-																ng-keyup="calculateTotalDimension('material')"
-																ng-model="budget.material.dimensions.height">
-														</div>
-													</div>
-
-													<div class="col-sm-3">
-														<div class="form-group">
-															<label class="control-label">Largura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="2"
-																ng-keyup="calculateTotalDimension('material')"
-																ng-model="budget.material.dimensions.width">
-														</div>
-													</div>
-
-													<div class="col-sm-3">
-														<div class="form-group">
-															<label class="control-label">Dimensão (m²)</label>
-															<input class="form-control text-right" disabled="disabled" 
-																value="{{ budget.material.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
-														</div>
-													</div>
-												</div>
-											</div>
-											
-											<div class="col-sm-6">
-												<h4 class="text-success mt-5 mb-5">
-													<span class="badge badge-pill badge-success">3</span>
-													Informe a área de impressão:
-												</h3>
-
-												<div class="row">
-													<div class="col-sm-3">
-														<div class="form-group">
-															<label class="control-label">Altura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="2"
-																ng-keyup="calculateTotalDimension('local')"
-																ng-model="budget.local.dimensions.height">
-														</div>
-													</div>
-
-													<div class="col-sm-3">
-														<div class="form-group">
-															<label class="control-label">Largura (m)</label>
-															<input type="text" class="form-control text-right" ui-number-mask="2"
-																ng-keyup="calculateTotalDimension('local')"
-																ng-model="budget.local.dimensions.width">
-														</div>
-													</div>
-
-													<div class="col-sm-3">
-														<div class="form-group">
-															<label class="control-label">Dimensão (m²)</label>
-															<input class="form-control text-right" disabled="disabled" 
-																value="{{ budget.local.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="row"
-											ng-if="(budget.local.dimensions.total / budget.material.dimensions.total) > 0">
-											<div class="col-sm-12">
-												<span>{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }} unidades necessárias de {{ budget.material.name }}</span>
-											</div>
-										</div>
-
-										<div class="row mt-5">
-											<div class="col-sm-12">
-												<button class="btn btn-success float-right"
-													ng-click="goToSelectImage()">
-													Escolher a imagem <i class="fa fa-angle-double-right"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="tab-pane" id="step3"
-									ng-class="{'active':(step == 3)}">
-									<div class="container">
-										<h3 class="text-success mt-5 mb-2" ng-if="(!budget.category)">
-											<span class="badge badge-pill badge-success">4</span>
-											Escolha uma categoria de imagens que deseja utilizar:
-										</h3>
-
-										<div class="row mt-5 mb-2" ng-if="(budget.category)">
-											<div class="col-sm-8">
-												<h3 class="text-success">
-													<span class="badge badge-pill badge-success">5</span>
-													Escolha a imagem que deseja utilizar:
-												</h3>
-											</div>
-											<div class="col-sm-4 text-right">
-												<button class="btn btn-secondary"
-													ng-click="budget.category = null;">
-													<i class="fa fa-angle-double-left"></i>
-													Voltar
-												</button>
-											</div>
-										</div>
-
-										<div class="form-group">
-											<label class="control-label">Não encontrou a imagem desejada?</label>
-											<div class="input-group">
-												<input class="form-control" placeholder="Digite aqui o termo de imagem que deseja" 
-													ng-model="budget.phrase">
-												<div class="input-group-append">
-													<button class="btn btn-success" ng-click="loadImagesByGettyImagesAPI()">
-													<i class="fa fa-search"></i> Pesquisar
-												</button>
-												</div>
-											</div>
-										</div>
-
-										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
-											ng-if="(!budget.category)">
-											<div class="col-sm-3" ng-repeat="category in image_categories">
-												<div class="card border border-{{ (budget.category) ? 'primary' : 'default' }} mb-5"
-													ng-click="budget.category = category">
-													<div class="card-img-top" style="background-image: url('{{ category.thumbnail }}');"></div>
-													<div class="card-body mt-2 p-0">
-														<h5 class="card-title text-center">{{ category.name }}</h5>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
-										 	ng-if="(budget.category)">
-											<div class="col-sm-3" ng-repeat="image in budget.category.images"
-												ng-click="selectImage(image)">
-												<div class="card border border-{{ (image.selected) ? 'success' : 'default' }} mb-5">
-													<div class="card-img-top" style="background-image: url('{{ image.path }}');"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="tab-pane" id="step4"
-									ng-class="{'active':(step == 4)}">
+						<div class="tab-content">
+							<div class="tab-pane" id="step1"
+								ng-class="{'active':(step == 1)}">
+								<div class="container">
 									<h3 class="text-success mt-5 mb-5">
-										<span class="badge badge-pill badge-success">6</span>
-										Confira seu orçamento:
+										<span class="badge badge-pill badge-success">1</span>
+										Escolha o Material que deseja utilizar:
 									</h3>
 
-									<div class="row">
-										<div class="col-sm-5">
-											<div class="card border border-success">
-												<div class="card-img-top" style="background-image: url('{{ budget.image.path }}');"></div>
+									<div class="row" style="height: 600px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;">
+										<div class="col-sm-3" ng-repeat="material in materials">
+											<div class="card border border-{{ (material.selected) ? 'success' : 'default' }} mb-5"
+												ng-click="selectMaterial(material)">
+												<div class="card-img-top" style="background-image: url('{{ material.thumbnail }}');"></div>
+												<div class="card-body mt-2 p-0">
+													<h5 class="card-title text-center">{{ material.name }}</h5>
+												</div>
 											</div>
 										</div>
+									</div>
+								</div>
+							</div>
 
-										<div class="col-sm-7">
+							<div class="tab-pane" id="step2"
+								ng-class="{'active':(step == 2)}">
+								<div class="container">
+									<div class="row">
+										<div class="col-sm-6">
+											<h5 class="text-success mt-5 mb-5">
+												<span class="badge badge-pill badge-success">2</span>
+												Qual o tamanho do(a) {{ budget.material.name }}:
+											</h5>
+
 											<div class="row">
-												<div class="col-sm-6">
-													<label class="control-label"><strong>Material de Aplicação</strong></label>
-													<input class="form-control" disabled="disabled" 
-														value="{{ budget.material.name }}">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Altura (m)</label>
+														<input type="text" class="form-control text-right" ui-number-mask="2"
+															ng-keyup="calculateTotalDimension('material')"
+															ng-model="budget.material.dimensions.height">
+													</div>
 												</div>
 
-												<div class="col-sm-6">
-													<label class="control-label"><strong>Tamanho do Material</strong></label>
-													<input class="form-control" disabled="disabled" 
-														value="{{ budget.material.dimensions.height }}m x {{ budget.material.dimensions.width }}m">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Largura (m)</label>
+														<input type="text" class="form-control text-right" ui-number-mask="2"
+															ng-keyup="calculateTotalDimension('material')"
+															ng-model="budget.material.dimensions.width">
+													</div>
+												</div>
+
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Dimensão (m²)</label>
+														<input class="form-control text-right" disabled="disabled" 
+															value="{{ budget.material.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
+													</div>
 												</div>
 											</div>
+										</div>
+										
+										<div class="col-sm-6">
+											<h5 class="text-success mt-5 mb-5">
+												<span class="badge badge-pill badge-success">3</span>
+												Informe a área de impressão:
+											</h5>
 
 											<div class="row">
-												<div class="col-sm-6">
-													<label class="control-label"><strong>Área de Aplicação</strong></label>
-													<input class="form-control" disabled="disabled" 
-														value="{{ budget.local.dimensions.height }}m x {{ budget.local.dimensions.width }}m">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Altura (m)</label>
+														<input type="text" class="form-control text-right" ui-number-mask="2"
+															ng-keyup="calculateTotalDimension('local')"
+															ng-model="budget.local.dimensions.height">
+													</div>
 												</div>
 
-												<div class="col-sm-6">
-													<label class="control-label"><strong>Unidades necessárias p/ aplicação</strong></label>
-													<input class="form-control" disabled="disabled" 
-														value="{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }}">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Largura (m)</label>
+														<input type="text" class="form-control text-right" ui-number-mask="2"
+															ng-keyup="calculateTotalDimension('local')"
+															ng-model="budget.local.dimensions.width">
+													</div>
+												</div>
+
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Dimensão (m²)</label>
+														<input class="form-control text-right" disabled="disabled" 
+															value="{{ budget.local.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row"
+										ng-if="(budget.local.dimensions.total / budget.material.dimensions.total) > 0">
+										<div class="col-sm-12">
+											<span>{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }} unidades necessárias de {{ budget.material.name }}</span>
+										</div>
+									</div>
+
+									<div class="row mt-5">
+										<div class="col-sm-12">
+											<button class="btn btn-success float-right"
+												ng-click="goToSelectImage()">
+												Escolher a imagem <i class="fa fa-angle-double-right"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-pane" id="step3"
+								ng-class="{'active':(step == 3)}">
+								<div class="container">
+									<h3 class="text-success mt-5 mb-4" ng-if="(!budget.category)">
+										<span class="badge badge-pill badge-success">4</span>
+										Escolha uma categoria de imagens que deseja utilizar:
+									</h3>
+
+									<div class="row mt-5 mb-4" ng-if="(budget.category)">
+										<div class="col-sm-8">
+											<h3 class="text-success">
+												<span class="badge badge-pill badge-success">5</span>
+												Escolha a imagem que deseja utilizar:
+											</h3>
+										</div>
+										<div class="col-sm-4 text-right">
+											<button class="btn btn-secondary"
+												ng-click="budget.category = null;">
+												<i class="fa fa-angle-double-left"></i>
+												Voltar
+											</button>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label">Não encontrou a imagem desejada?</label>
+										<div class="input-group">
+											<input class="form-control" placeholder="Digite aqui o termo de imagem que deseja" 
+												ng-model="getty_images.search_options.actual.phrase" ng-enter="loadImagesByGettyImagesAPI()">
+											<div class="input-group-append">
+												<button class="btn btn-secondary" 
+													ng-if="(getty_images.search_data.images)"
+													ng-click="getty_images.search_options.show = !getty_images.search_options.show">
+													<i class="fa fa-sliders"></i>
+													<span ng-if="(!getty_images.search_options.show)">Exibir</span>
+													<span ng-if="(getty_images.search_options.show)">Ocultar</span>
+													opções de filtro
+												</button>
+												<button class="btn btn-success" ng-click="loadImagesByGettyImagesAPI()">
+													<i class="fa fa-search"></i> Pesquisar
+												</button>
+												<button class="btn btn-danger" 
+													ng-if="(getty_images.search_data.images)"
+													ng-click="resetGettyImagesAPISearch()">
+													<i class="fa fa-times-circle"></i> Cancelar pesquisa
+												</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-3" ng-if="(getty_images.search_options.show)">
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<label><strong>Orientação</strong></label>
+														<div class="form-check" ng-repeat="(index, orientation) in getty_images.search_options.orientations">
+															<input class="form-check-input" type="checkbox" id="cb-orientation-{{ index }}"
+																ng-model="orientation.selected"
+																ng-checked="orientation.selected">
+															<label class="form-check-label" for="cb-orientation-{{ index }}">
+																{{ orientation.label }}
+															</label>
+														</div>
+													</div>
 												</div>
 											</div>
 
 											<div class="row">
 												<div class="col-sm-12">
-													<label class="control-label"><strong>Imagem escolhida</strong></label>
-													<input class="form-control" disabled="disabled" 
-														value="#{{ budget.image.code }} ({{ budget.category.name }})">
+													<div class="form-group">
+														<label><strong>Número de Pessoas</strong></label>
+														<div class="form-check" ng-repeat="(index, nop) in getty_images.search_options.number_of_people">
+															<input class="form-check-input" type="checkbox" id="cb-nop-{{ index }}"
+																ng-model="nop.selected"
+																ng-checked="nop.selected">
+															<label class="form-check-label" for="cb-nop-{{ index }}">
+																{{ nop.label }}
+															</label>
+														</div>
+													</div>
 												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<label><strong>Estilo da Imagem</strong></label>
+														<div class="form-check" ng-repeat="(index, composition) in getty_images.search_options.compositions">
+															<input class="form-check-input" type="checkbox" id="cb-composition-{{ index }}"
+																ng-model="composition.selected"
+																ng-checked="composition.selected">
+															<label class="form-check-label" for="cb-composition-{{ index }}">
+																{{ composition.label }}
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-sm-{{ (getty_images.search_options.show) ? '9' : '12' }}">
+											<div class="row mt-5" ng-if="(getty_images.search_options.is_loading)">
+												<div class="col-sm-12 text-center">
+													<h4 class="text-success">
+														<i class="fa fa-2x fa-spin fa-spinner"></i>
+														<br>
+														Aguarde, carregando imagens...
+													</h4>
+												</div>
+											</div>
+
+											<div class="row mt-5" ng-if="(!getty_images.search_options.is_loading) && (getty_images.search_data.images.length == 0)">
+												<div class="col-sm-12 text-center">
+													<h4 class="text-success">
+														<i class="fa fa-2x fa-ban"></i>
+														<br>
+														Desculpe, tente novamente com outras opções!
+														<br>
+														<small class="text-muted">Nenhuma imagem foi encontrada com os parâmetros da pesquisa realizada.</small>
+													</h4>
+												</div>
+											</div>
+
+											<div id="getty-images-container" class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
+												ng-if="(!getty_images.search_options.is_loading) && (getty_images.search_data.images)">
+												<div class="col-sm-{{ (getty_images.search_options.show) ? '3' : '2' }}" 
+													ng-repeat="getty_image in getty_images.search_data.images">
+													<div class="card border border-{{ (getty_image.selected) ? 'success' : 'default' }} mb-5"
+														ng-click="selectImage(getty_image)">
+														<div class="card-img-top getty_image" 
+															style="background-image: url('{{ getty_image.display_sizes[0].uri }}');">
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row" ng-if="(!getty_images.search_options.is_loading) && (getty_images.search_data.images)">
+												<div class="col-sm-6">
+													Exibindo {{ getty_images.search_options.current_count }} de {{ getty_images.search_data.result_count | NumberFormat : 0 : ',' : '.' }}
+												</div>
+												<div class="col-sm-6 text-right" ng-if="(getty_images.search_data.result_count > 24)">
+													<button class="btn btn-success" ng-click="loadImagesByGettyImagesAPI()">
+														Carregar mais imagens
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
+										ng-if="(!budget.category) && ((!getty_images.search_options.is_loading) && (!getty_images.search_data.images))">
+										<div class="col-sm-3" ng-repeat="category in image_categories">
+											<div class="card border border-{{ (budget.category) ? 'success' : 'default' }} mb-5"
+												ng-click="budget.category = category">
+												<div class="card-img-top" style="background-image: url('{{ category.thumbnail }}');"></div>
+												<div class="card-body mt-2 p-0">
+													<h5 class="card-title text-center">{{ category.name }}</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
+									 	ng-if="(budget.category) && ((!getty_images.search_options.is_loading) && (!getty_images.search_data.images))">
+										<div class="col-sm-3" ng-repeat="image in budget.category.images"
+											ng-click="selectImage(image)">
+											<div class="card border border-{{ (image.selected) ? 'success' : 'default' }} mb-5">
+												<div class="card-img-top" style="background-image: url('{{ image.path }}');"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-pane" id="step4"
+								ng-class="{'active':(step == 4)}">
+								<div class="row mt-5 mb-2">
+									<div class="col-sm-8">
+										<h3 class="text-success">
+											<span class="badge badge-pill badge-success">6</span>
+											Confira seu orçamento:
+										</h3>
+									</div>
+									<div class="col-sm-4 text-right">
+										<button class="btn btn-secondary"
+											ng-click="goBack(3);">
+											<i class="fa fa-angle-double-left"></i>
+											Voltar
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-5">
+										<div class="card border border-success">
+											<div class="card-img-top" style="background-image: url('{{ budget.image.path }}');"></div>
+										</div>
+									</div>
+
+									<div class="col-sm-7">
+										<div class="row">
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Material de Aplicação</strong></label>
+												<input class="form-control" disabled="disabled" 
+													value="{{ budget.material.name }}">
+											</div>
+
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Tamanho do Material</strong></label>
+												<input class="form-control text-center" disabled="disabled" 
+													value="{{ budget.material.dimensions.height | NumberFormat : 2 : '.' : ',' }}m x {{ budget.material.dimensions.width | NumberFormat : 2 : '.' : ',' }}m">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Unidades necessárias p/ aplicação</strong></label>
+												<input class="form-control" disabled="disabled" 
+													value="{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }}">
+											</div>
+
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Área de Impressão</strong></label>
+												<input class="form-control text-center" disabled="disabled" 
+													value="{{ budget.local.dimensions.height | NumberFormat : 2 : '.' : ',' }}m x {{ budget.local.dimensions.width | NumberFormat : 2 : '.' : ',' }}m">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Imagem escolhida</strong></label>
+												<input class="form-control" disabled="disabled" 
+													value="#{{ budget.image.code }} ({{ budget.category.name }})">
+											</div>
+
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Área Total de Impressão</strong></label>
+												<input class="form-control text-center" disabled="disabled" 
+													value="{{ budget.local.dimensions.total | NumberFormat : 2 : '.' : ',' }}m²">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6"></div>
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Valor do m² p/ Impressão</strong></label>
+												<input class="form-control text-center" disabled="disabled" 
+													value="R$ {{ budget.material.cost | NumberFormat : 2 : ',' : '.' }}">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6"></div>
+											<div class="col-sm-6">
+												<label class="control-label"><strong>Valor da Impressão</strong></label>
+												<input class="form-control text-center" disabled="disabled" 
+													value="R$ {{ (budget.material.cost * budget.local.dimensions.total) | NumberFormat : 2 : ',' : '.' }}">
 											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="clearfix"></div>
+								<div class="row mt-5">
+									<div class="col-sm-12">
+										<button class="btn btn-success float-right"
+											ng-click="step = 5">
+											Confirmar pedido <i class="fa fa-angle-double-right"></i>
+										</button>
+									</div>
+								</div>
 							</div>
-						</form>
+
+							<div class="tab-pane" id="step5"
+								ng-class="{'active':(step  == 5)}">
+								<h3 class="text-success mt-5">
+									<span class="badge badge-pill badge-success">7</span>
+									Para confirmar o pedido, informe seus dados:
+								</h3>
+
+								<div class="row">
+									<div class="col-sm-8">
+										<fieldset>
+											<legend>Informações de Contato</legend>
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<label>Nome Completo</label>
+														<input class="form-control" ng-model="budget.customer.name">
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-3">
+													<div class="form-group">
+														<label>Telefone</label>
+														<input class="form-control" ng-model="budget.customer.default_phone" ui-br-phone-number>
+													</div>
+												</div>
+
+												<div class="col-sm-3">
+													<div class="form-group">
+														<label>Celular</label>
+														<input class="form-control" ng-model="budget.customer.mobile_phone" ui-br-phone-number>
+													</div>
+												</div>
+
+												<div class="col-sm-6">
+													<div class="form-group">
+														<label>E-mail</label>
+														<input class="form-control" ng-model="budget.customer.email">
+													</div>
+												</div>
+											</div>
+										</fieldset>
+
+										<fieldset>
+											<legend>Endereço de Instalação</legend>
+											<div class="row">
+												<div class="col-sm-3">
+													<div class="form-group">
+														<label>CEP</label>
+														<input class="form-control" ui-br-cep-mask
+															ng-model="budget.customer.postal_code" 
+															ng-blur="getEnderecoByCEP()">
+													</div>
+												</div>
+
+												<div class="col-sm-6">
+													<div class="form-group">
+														<label>Endereço</label>
+														<input class="form-control" ng-model="budget.customer.address">
+													</div>
+												</div>
+
+												<div class="col-sm-3">
+													<div class="form-group">
+														<label>Número</label>
+														<input type="number" class="form-control" ng-model="budget.customer.number">
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-5">
+													<div class="form-group">
+														<label>Bairro</label>
+														<input class="form-control" ng-model="budget.customer.district">
+													</div>
+												</div>
+
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label>Cidade</label>
+														<input class="form-control" ng-model="budget.customer.city">
+													</div>
+												</div>
+
+												<div class="col-sm-3">
+													<div class="form-group">
+														<label>Estado</label>
+														<input class="form-control" ng-model="budget.customer.state">
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<label>Observações</label>
+														<textarea class="form-control" rows="6" 
+															ng-model="budget.customer.comments"></textarea>
+													</div>
+												</div>
+											</div>
+										</fieldset>
+
+										<div class="row">
+											<div class="col-sm-12 text-right">
+												<button class="btn btn-success"
+													ng-click="confirmBudgetRequest()">
+													<i class="fa fa-check-circle"></i> Enviar pedido
+												</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-sm-4">
+										<div class="card-img-top" 
+											style="background-image: url('http://via.placeholder.com/350x620?text=[Promo Banner]'); height: 620px;">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix"></div>
+						</div>
 					</div>
 				</section>
 			</div>
 		</div>
 	</div>
 	
-	<footer class="mt-5">
+	<footer>
 		<div class="container">
 			<p class="float-right">
 				<a href="#">Voltar ao topo</a>
@@ -337,7 +618,7 @@
 
 	<script src="assets/js/extras.js"></script>
 
-	<script src="assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
+	<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="assets/bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
 	<script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

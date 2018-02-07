@@ -11,3 +11,7 @@ function isEmpty(vlr, zero){
 	else
 		return false;
 }
+
+function baseUrlApi(){
+  return location.protocol +"//"+ location.hostname + ":8080/";
+}

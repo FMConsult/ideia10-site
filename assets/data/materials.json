@@ -1,45 +1,59 @@
 [
 	{
 		"name": "Cerâmica",
-		"image": "assets/img/material/ceramica.png"
+		"thumbnail": "assets/img/material/ceramica.jpg",
+		"cost": 250
 	},{
 		"name": "Metal",
-		"image": "assets/img/material/metal.jpg"
+		"thumbnail": "assets/img/material/metal.jpg",
+		"cost": 0
 	},{
 		"name": "Painel de Espelho",
-		"image": "assets/img/material/painel_espelho.jpg"
+		"thumbnail": "assets/img/material/painel_espelho.jpg",
+		"cost": 325
 	},{
 		"name": "Painel de Madeira Teca",
-		"image": "assets/img/material/painel_madeira_teca.jpg"
+		"thumbnail": "assets/img/material/painel_madeira_teca.jpg",
+		"cost": 250
 	},{
 		"name": "Painel de MDF",
-		"image": "assets/img/material/painel_mdf.jpg"
+		"thumbnail": "assets/img/material/painel_mdf.jpg",
+		"cost": 250
 	},{
 		"name": "Painel Pinus",
-		"image": "assets/img/material/painel_pinus.jpg"
+		"thumbnail": "assets/img/material/painel_pinus.jpg",
+		"cost": 250
 	},{
 		"name": "Papel de Parede",
-		"image": "assets/img/material/papel_parede.jpg"
+		"thumbnail": "assets/img/material/papel_parede.jpg",
+		"cost": 0
 	},{
 		"name": "Plastilha de Cerâmica",
-		"image": "assets/img/material/pastilha_ceramica.jpg"
+		"thumbnail": "assets/img/material/pastilha_ceramica.jpg",
+		"cost": 0
 	},{
 		"name": "Persiana",
-		"image": "assets/img/material/persiana.png"
+		"thumbnail": "assets/img/material/persiana.png",
+		"cost": 0
 	},{
 		"name": "Azulejo de Piscina",
-		"image": "assets/img/material/piscina.jpg"
+		"thumbnail": "assets/img/material/piscina.jpg",
+		"cost": 250
 	},{
 		"name": "Plástico",
-		"image": "assets/img/material/plastico.jpg"
+		"thumbnail": "assets/img/material/plastico.jpg",
+		"cost": 0
 	},{
 		"name": "Porcelanato",
-		"image": "assets/img/material/porcelanato.png"
+		"thumbnail": "assets/img/material/porcelanato.png",
+		"cost": 250
 	},{
 		"name": "Porta",
-		"image": "assets/img/material/porta.png"
+		"thumbnail": "assets/img/material/porta.png",
+		"cost": 250
 	},{
 		"name": "Vidro",
-		"image": "assets/img/material/vidro.png"
+		"thumbnail": "assets/img/material/vidro.png",
+		"cost": 325
 	}
 ]
