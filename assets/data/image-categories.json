@@ -5,52 +5,42 @@
 		"images": [
 			{
 				"code": "653867979",
-				"path": "assets/img/produto/abistrato/653867979.jpg"
+				"path": "assets/img/produto/abstrato/653867979.jpg"
 			},{
-	
 				"code": "653867978",
-				"path": "assets/img/produto/abistrato/653867978.jpg"
+				"path": "assets/img/produto/abstrato/653867978.jpg"
 			},{
-			
-			
 				"code": "653867977",
-				"path": "assets/img/produto/abistrato/653867977.jpg"
+				"path": "assets/img/produto/abstrato/653867977.jpg"
 			},{
 			
 				"code": "653867976",
-				"path": "assets/img/produto/abistrato/653867976.jpg"
+				"path": "assets/img/produto/abstrato/653867976.jpg"
 			},{
-			
 				"code": "639486876",
-				"path": "assets/img/produto/abistrato/639486876.jpg"
+				"path": "assets/img/produto/abstrato/639486876.jpg"
 			},{
-
 				"code": "533846142",
-				"path": "assets/img/produto/abistrato/533846142.jpg"
+				"path": "assets/img/produto/abstrato/533846142.jpg"
 			},{
-
 				"code": "523169768",
-				"path": "assets/img/produto/abistrato/523169768.jpg"
+				"path": "assets/img/produto/abstrato/523169768.jpg"
 			},{
-
 				"code": "502259772",
-				"path": "assets/img/produto/abistrato/502259772.jpg"
+				"path": "assets/img/produto/abstrato/502259772.jpg"
 			}
 		]
 	},{
-		"name": "animais/",
+		"name": "Animais",
 		"thumbnail": "assets/img/setor/animais.jpg",
 		"images": [
 			{
-
 				"code": "460504349",
 				"path": "assets/img/produto/animais/460504349.jpg"
 			},{
-
 				"code": "469451158",
 				"path": "assets/img/produto/animais/469451158.jpg"
 			},{
-
 				"code": "487597060",
 				"path": "assets/img/produto/animais/487597060.jpg"
 			},{
@@ -63,11 +53,9 @@
 				"code": "534056241",
 				"path": "assets/img/produto/animais/534056241.jpg"
 			},{
-
 				"code": "611759814",
 				"path": "assets/img/produto/animais/611759814.jpg"
 			},{
-
 				"code": "626850736",
 				"path": "assets/img/produto/animais/626850736.jpg"
 			}
@@ -77,15 +65,12 @@
 		"thumbnail": "assets/img/setor/bar.jpg",
 		"images": [
 			{
-
 				"code": "146767287",
 				"path": "assets/img/produto/bar/146767287.jpg"
 			},{
-
 				"code": "475407509",
 				"path": "assets/img/produto/bar/475407509.jpg"
 			},{
-
 				"code": "521870583",
 				"path": "assets/img/produto/bar/521870583.jpg"
 			}
@@ -95,11 +80,9 @@
 		"thumbnail": "assets/img/setor/carro.jpg",
 		"images": [
 			{
-
 				"code": "534637617",
 				"path": "assets/img/produto/carros/534637617.jpg"
 			},{
-
 				"code": "519936391",
 				"path": "assets/img/produto/carros/519936391.jpg"
 			},{
@@ -145,7 +128,6 @@
 				"code": "90401315",
 				"path": "assets/img/produto/carros/90401315.jpg"
 			},{
-
 				"code": "87605207",
 				"path": "assets/img/produto/carros/87605207.jpg"
 			}
@@ -206,7 +188,6 @@
 		"thumbnail": "assets/img/setor/cidade.jpg",
 		"images": [
 			{
-
 				"code": "853307346",
 				"path": "assets/img/produto/cidades/853307346.jpg"
 			},{
@@ -273,7 +254,6 @@
 		"thumbnail": "assets/img/setor/conceitual.jpg",
 		"images": [
 			{
-
 				"code": "609952740",
 				"path": "assets/img/produto/609952740.jpg"
 			},{
@@ -292,7 +272,6 @@
 		"thumbnail": "assets/img/setor/esporte.jpg",
 		"images": [
 			{
-
 				"code": "116044286",
 				"path": "assets/img/produto/116044286.jpg"
 			},{
@@ -314,7 +293,6 @@
 		"thumbnail": "assets/img/setor/ilustracao.jpg",
 		"images": [
 			{
-
 				"code": "509111040",
 				"path": "assets/img/produto/509111040.jpg"
 			},{
@@ -333,7 +311,6 @@
 		"thumbnail": "assets/img/setor/moto.jpg",
 		"images": [
 			{
-
 				"code": "99713921",
 				"path": "assets/img/produto/moto/99713921.jpg"
 			},{
@@ -352,7 +329,6 @@
 		"thumbnail": "assets/img/setor/noturna.jpg",
 		"images": [
 			{
-
 				"code": "501000704",
 				"path": "assets/img/produto/noturna/501000704.jpg"
 			},{
@@ -383,7 +359,6 @@
 		"thumbnail": "assets/img/setor/paisagem.jpg",
 		"images": [
 			{
-
 				"code": "486121005",
 				"path": "assets/img/produto/paisagens/486121005.jpg"
 			},{
@@ -408,7 +383,6 @@
 		"thumbnail": "assets/img/setor/retro.jpg",
 		"images": [
 			{
-
 				"code": "533890603",
 				"path": "assets/img/produto/retro/533890603.jpg"
 			},{

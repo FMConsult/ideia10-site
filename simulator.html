@@ -194,41 +194,12 @@
 								<div class="tab-pane" id="step3"
 									ng-class="{'active':(step == 3)}">
 									<div class="container">
-										<!--<div class="form-group">
-											<label class="control-label">Pesquisa de imagens</label>
-											<input class="form-control" ng-model="budget.phrase">
-										</div>
-
-										<div class="form-group">
-											<label class="control-label"></label>
-											<div class="controls">
-												<button class="btn btn-primary" ng-click="loadImagesByGettyImagesAPI()">
-													<i class="fa fa-search"></i> Pesquisar
-												</button>
-											</div>
-										</div>
-
-										<pre>{{ images | json }}</pre>-->
-
-										<h3 class="text-success mt-5 mb-5" ng-if="(!budget.category)">
+										<h3 class="text-success mt-5 mb-2" ng-if="(!budget.category)">
 											<span class="badge badge-pill badge-success">4</span>
 											Escolha uma categoria de imagens que deseja utilizar:
 										</h3>
 
-										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
-											ng-if="(!budget.category)">
-											<div class="col-sm-3" ng-repeat="category in image_categories">
-												<div class="card border border-{{ (budget.category) ? 'primary' : 'default' }} mb-5"
-													ng-click="budget.category = category">
-													<div class="card-img-top" style="background-image: url('{{ category.thumbnail }}');"></div>
-													<div class="card-body mt-2 p-0">
-														<h5 class="card-title text-center">{{ category.name }}</h5>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="row mt-5 mb-5" ng-if="(budget.category)">
+										<div class="row mt-5 mb-2" ng-if="(budget.category)">
 											<div class="col-sm-8">
 												<h3 class="text-success">
 													<span class="badge badge-pill badge-success">5</span>
@@ -241,6 +212,32 @@
 													<i class="fa fa-angle-double-left"></i>
 													Voltar
 												</button>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label">Não encontrou a imagem desejada?</label>
+											<div class="input-group">
+												<input class="form-control" placeholder="Digite aqui o termo de imagem que deseja" 
+													ng-model="budget.phrase">
+												<div class="input-group-append">
+													<button class="btn btn-success" ng-click="loadImagesByGettyImagesAPI()">
+													<i class="fa fa-search"></i> Pesquisar
+												</button>
+												</div>
+											</div>
+										</div>
+
+										<div class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
+											ng-if="(!budget.category)">
+											<div class="col-sm-3" ng-repeat="category in image_categories">
+												<div class="card border border-{{ (budget.category) ? 'primary' : 'default' }} mb-5"
+													ng-click="budget.category = category">
+													<div class="card-img-top" style="background-image: url('{{ category.thumbnail }}');"></div>
+													<div class="card-body mt-2 p-0">
+														<h5 class="card-title text-center">{{ category.name }}</h5>
+													</div>
+												</div>
 											</div>
 										</div>
 
