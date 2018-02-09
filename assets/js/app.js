@@ -82,7 +82,7 @@ app.controller('ProjetosController', function($scope, $http){
 	$scope.saveProjeto = function() {
 		$http({
 			method: 'POST',
-			url: 'http://localhost:8080/project',
+			url: baseUrlApi()+ 'project',
 			data: JSON.stringify($scope.projeto)
 		}).then(
 			function successCallback(response) {
@@ -97,7 +97,7 @@ app.controller('ProjetosController', function($scope, $http){
 	$scope.deleteProjeto = function(item) {
 		$http({
 			method: 'DELETE',
-			url: 'http://localhost:8080/project/'+ item.id
+			url: baseUrlApi()+ 'project/'+ item.id
 		}).then(
 			function successCallback(response) {
 				loadProjects();
@@ -110,7 +110,7 @@ app.controller('ProjetosController', function($scope, $http){
 	$scope.saveCategory = function() {
 		$http({
 			method: 'POST',
-			url: 'http://localhost:8080/category',
+			url: baseUrlApi()+ 'category',
 			data: JSON.stringify($scope.category)
 		}).then(
 			function successCallback(response) {
@@ -126,7 +126,7 @@ app.controller('ProjetosController', function($scope, $http){
 	$scope.loadProjects = function() {
 		$http({
 			method: 'GET',
-			url: 'http://localhost:8080/projects'
+			url: baseUrlApi()+ 'projects'
 		}).then(
 			function successCallback(response) {
 				$scope.projects = response.data;
@@ -139,7 +139,7 @@ app.controller('ProjetosController', function($scope, $http){
 	$scope.loadCategories = function() {
 		$http({
 			method: 'GET',
-			url: 'http://localhost:8080/categories'
+			url: baseUrlApi()+ 'categories'
 		}).then(
 			function successCallback(response) {
 				$scope.categories = response.data;
@@ -153,7 +153,7 @@ app.controller('ProjetosController', function($scope, $http){
 		$scope.instagram_feed = {};
 		$http({
 			method: 'GET',
-			url: 'http://localhost:8080/external/instagram/feed'
+			url: baseUrlApi()+ 'external/instagram/feed'
 		}).then(
 			function successCallback(response) {
 				$scope.instagram_feed = response.data;
@@ -173,7 +173,7 @@ app.controller('BannersController', function($scope, $http){
 	$scope.saveBanner = function() {
 		$http({
 			method: 'POST',
-			url: 'http://localhost:8080/banner',
+			url: baseUrlApi()+ 'banner',
 			data: JSON.stringify($scope.banner)
 		}).then(
 			function successCallback(response) {
@@ -188,7 +188,7 @@ app.controller('BannersController', function($scope, $http){
 	$scope.deleteBanner = function(item) {
 		$http({
 			method: 'DELETE',
-			url: 'http://localhost:8080/banner/'+ item.id
+			url: baseUrlApi()+ 'banner/'+ item.id
 		}).then(
 			function successCallback(response) {
 				loadBanners();
@@ -201,7 +201,7 @@ app.controller('BannersController', function($scope, $http){
 	function loadBanners() {
 		$http({
 			method: 'GET',
-			url: 'http://localhost:8080/banners'
+			url: baseUrlApi()+ 'banners'
 		}).then(
 			function successCallback(response) {
 				$scope.banners = response.data;
