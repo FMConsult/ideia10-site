@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,11 +11,13 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="assets/bower_components/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
 	<link href="assets/css/carousel.css" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="ProjetosController">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-custom">
 			<a  href="#">
@@ -53,198 +55,42 @@
 		</nav>
 	</header>
 
-	<div class="container">
+	<div class="container pt-5 mb-5">
 		<h1>Projetos recentes</h1>
 
 		<hr>
 
-		<div class="row mt-5 mb-5">
-			<div class="col-md-12 text-center">
-				<div class="btn-group" role="group" aria-label="Basic example">
-					<div class="btn-group" role="group">
-						<button id="btnGroupDrop1" type="button" 
-							class="btn btn-verde dropdown-toggle" 
-							data-toggle="dropdown" 
-							aria-haspopup="true" aria-expanded="false">
-							Quadros
-						</button>
-						<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-							<a class="dropdown-item" href="#">Aço</a>
-							<a class="dropdown-item" href="#">Vidro</a>
-							<a class="dropdown-item" href="#">Espelho</a>
-							<a class="dropdown-item" href="#">Laminado</a>
-						</div>
-					</div>
-					<div class="btn-group" role="group">
-						<button id="btnGroupDrop1" type="button" 
-							class="btn btn-verde dropdown-toggle" 
-							data-toggle="dropdown" 
-							aria-haspopup="true" aria-expanded="false">
-							Murais
-						</button>
-						<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-							<a class="dropdown-item" href="#">Porcelanato</a>
-							<a class="dropdown-item" href="#">Pastilhas</a>
-							<a class="dropdown-item" href="#">Azulejo</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="row">
-			<div class="col-md-3">
-				<div class="row">
-					<div class="col-md-12">
-						<img class="img-fluid img-thumbnail mx-auto" src="material/aplicacoes/escada_concreto_idea10.jpg" alt="Generic placeholder image">
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h4>Project title</h4>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-				</div>
+			<div class="col-sm-12 mt-5 text-center" ng-if="(instagram_feed && !instagram_feed.items)">
+				<h4 class="text-success">
+					<i class="fa fa-2x fa-spin fa-spinner"></i>
+					<br>
+					Aguarde, carregando imagens...
+				</h4>
 			</div>
 
-			<div class="col-md-3">
-				<div class="row">
-					<div class="col-md-12">
-						<img class="img-fluid img-thumbnail mx-auto" src="material/aplicacoes/escada_idea10.jpg" alt="Generic placeholder image">
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h4>Project title</h4>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="row">
-					<div class="col-md-12">
-						<img class="img-fluid img-thumbnail mx-auto" src="material/aplicacoes/quarto_cama_idea10.jpg" alt="Generic placeholder image">
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h4>Project title</h4>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-				</div>
-			</div>
-		
-			<div class="col-md-3">
-				<div class="row">
-					<div class="col-md-12">
-						<img class="img-fluid img-thumbnail mx-auto" src="material/aplicacoes/sala_pedireitoalto_tv_idea10.jpg" alt="Generic placeholder image">
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h4>Project title</h4>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-3">
-				<div class="row">
-					<div class="col-md-12">
-						<img class="img-fluid img-thumbnail mx-auto" src="material/aplicacoes/sala_TV_idea10.jpg" alt="Generic placeholder image">
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h4>Project title</h4>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="row">
-					<div class="col-md-12">
-						<img class="img-fluid img-thumbnail mx-auto" src="material/aplicacoes/hall_marmore_idea10.jpg" alt="Generic placeholder image">
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h4>Project title</h4>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="row">
-					<div class="col-md-12">
-						<img class="img-fluid img-thumbnail mx-auto" src="material/aplicacoes/sala_sofa_idea10.jpg" alt="Generic placeholder image">
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-md-12">
-						<h4>Project title</h4>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-				</div>
+			<div class="col-md-3 mt-3" 
+				ng-repeat="feed_item in instagram_feed.items"
+				ng-if="(!feed_item.video_versions)">
+				<a href="{{ feed_item.carousel_media[0].image_versions2.candidates[0].url }}" 
+					data-fancybox="instagram_feed" data-caption="{{ feed_item.caption.text }}"
+					ng-if="(feed_item.carousel_media)">
+					<img class="img-fluid img-thumbnail mx-auto"
+						uib-tooltip="{{ feed_item.caption.text }}" tooltip-trigger="focus"
+						src="{{ feed_item.carousel_media[0].image_versions2.candidates[0].url }}">
+				</a>
+				<a href="{{ feed_item.image_versions2.candidates[0].url }}" 
+					data-fancybox="instagram_feed" data-caption="{{ feed_item.caption.text }}"
+					ng-if="(feed_item.image_versions2)">
+					<img class="img-fluid img-thumbnail mx-auto"
+						uib-tooltip="{{ feed_item.caption.text }}" tooltip-trigger="focus"
+						src="{{ feed_item.image_versions2.candidates[0].url }}">
+				</a>
 			</div>
 		</div>
 	</div>
 
-	<footer class="mt-5">
+	<footer>
 		<div class="container">
 			<p class="float-right">
 				<a href="#">Voltar ao topo</a>
@@ -263,9 +109,22 @@
 		</div>						
 	</footer>
 
-	<script src="assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
+	<script src="assets/js/extras.js"></script>
+
+	<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="assets/bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
 	<script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="assets/bower_components/holderjs/holder.min.js"></script>
+	<script src="assets/bower_components/underscore/underscore-min.js"></script>
+	<script src="assets/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
+
+	<script src="assets/bower_components/angular/angular.js"></script>
+	<script src="assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+	<script src="assets/bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+	<script src="assets/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	
+	<script src="assets/js/app.js"></script>
 </body>
 </html>

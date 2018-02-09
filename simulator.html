@@ -322,7 +322,7 @@
 
 											<div id="getty-images-container" class="row" style="height: 540px; overflow-x: auto; overflow-y: scroll; white-space: nowrap;"
 												ng-if="(!getty_images.search_options.is_loading) && (getty_images.search_data.images)">
-												<div class="col-sm-{{ (getty_images.search_options.show) ? '3' : '2' }}" 
+												<div class="col-sm-{{ getImageGridColumns(getty_image) }}" 
 													ng-repeat="getty_image in getty_images.search_data.images">
 													<div class="card border border-{{ (getty_image.selected) ? 'success' : 'default' }} mb-5"
 														ng-click="selectImage(getty_image)">
@@ -633,10 +633,13 @@
 	<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="assets/bower_components/holderjs/holder.min.js"></script>
 	<script src="assets/bower_components/underscore/underscore-min.js"></script>
+	<script src="assets/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
 
 	<script src="assets/bower_components/angular/angular.js"></script>
 	<script src="assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
 	<script src="assets/bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+	<script src="assets/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	
 	<script src="assets/js/app.js"></script>
 </body>
