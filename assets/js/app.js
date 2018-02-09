@@ -1,4 +1,4 @@
-var app = angular.module('idea10', ['summernote','ui.utils.masks']);
+var app = angular.module('idea10', ['summernote','ui.utils.masks','ui.bootstrap']);
 
 app.filter('NumberFormat', NumberFormat)
 app.filter('DateFormat', DateFormat);
@@ -123,7 +123,7 @@ app.controller('ProjetosController', function($scope, $http){
 			});
 	}
 
-	function loadProjects() {
+	$scope.loadProjects = function() {
 		$http({
 			method: 'GET',
 			url: 'http://localhost:8080/projects'
@@ -136,7 +136,7 @@ app.controller('ProjetosController', function($scope, $http){
 			});
 	}
 
-	function loadCategories() {
+	$scope.loadCategories = function() {
 		$http({
 			method: 'GET',
 			url: 'http://localhost:8080/categories'
@@ -149,8 +149,21 @@ app.controller('ProjetosController', function($scope, $http){
 			});
 	}
 
-	loadProjects();
-	loadCategories();
+	$scope.loadInstagramFeed = function() {
+		$scope.instagram_feed = {};
+		$http({
+			method: 'GET',
+			url: 'http://localhost:8080/external/instagram/feed'
+		}).then(
+			function successCallback(response) {
+				$scope.instagram_feed = response.data;
+			},
+			function erroCallback(response){
+				$scope.instagram_feed = null;
+			});
+	}
+
+	$scope.loadInstagramFeed();
 });
 
 app.controller('BannersController', function($scope, $http){
@@ -409,6 +422,13 @@ app.controller('SimulatorController', function($scope, $http) {
 		};
 
 		$http(request_options).then(function(response) {
+			angular.forEach(response.data.images, function(image) {
+				if(image.max_dimensions.height > image.max_dimensions.width)
+					image.orientation = 'vertical';
+				else if(image.max_dimensions.width > image.max_dimensions.height)
+					image.orientation = 'horizontal';
+			});
+
 			if($scope.getty_images.search_options.actual.page == 1) {
 				$scope.getty_images.search_options.current_count = response.data.images.length;
 				$scope.getty_images.search_data = response.data;
@@ -426,6 +446,13 @@ app.controller('SimulatorController', function($scope, $http) {
 			$scope.getty_images.search_options.forward = angular.copy($scope.getty_images.search_options.actual);
 			$scope.getty_images.search_options.is_loading = false;
 		});
+	}
+
+	$scope.getImageGridColumns = function(image) {
+		var columns = ($scope.getty_images.search_options.show) ? '3' : '2';
+		if(image.orientation == 'horizontal')
+			columns = ($scope.getty_images.search_options.show) ? '4' : '3';
+		return columns;
 	}
 
 	$scope.selectMaterial = function(material) {
