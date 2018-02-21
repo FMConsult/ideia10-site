@@ -1,13 +1,13 @@
-<!doctype html>
+'<!doctype html>
 <html lang="pt-br" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="../assets/img/logo.png" width="140" height="140">
+	<link rel="icon" href="../assets/img/logo.png">
 
-	<title>Ideia10</title>
+	<title>Idea10</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,24 @@
 			</div>
 		</div>
 	</div>
-
+'<footer>
+		<div class="container">
+			<p class="float-right">
+				<a href="../index.html">volta ao site</a>
+			</p>
+			<p>
+				Designed by SD Marketing Mobile &copy; 2017 Idea10. &middot; 
+				<a href="#">Política de Privaciade</a> &middot; 
+				<a href="#">Termo de Compromisso</a>
+			</p>
+			<p class="container-fluid">
+				<a href="#"><span class="fa fa-facebook"></span></a>
+				<a href="#"><span class="fa fa-linkedin"></span></a>
+				<a href="#"><span class="fa fa-youtube"></span></a>
+				<a href="#"><span class="fa fa-skype"></span></a>
+			</p>
+		</div>						
+</footer>
 	<script src="../assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
 	<script src="../assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -57,4 +74,4 @@
 	
 	<script src="../assets/js/app.js"></script>
 </body>
-</html>
+</html>'

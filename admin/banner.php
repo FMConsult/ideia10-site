@@ -1,8 +1,8 @@
-<!doctype html>
+ <!doctype html>
 <html lang="pt-br" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
-	<meta name=4"viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="../assets/img/logo.png">
