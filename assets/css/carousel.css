@@ -29,7 +29,7 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-	height: 32rem;
+	height: 40rem;
 	background-color: #777;
 }
 .carousel-item .img {
@@ -95,20 +95,29 @@ body {
 	}
 
 	.featurette-heading {
-		font-size: 50px;
+		font-size: 35px;
 	}
 }
 
 @media (min-width: 62em) {
 	.featurette-heading {
-		margin-top: 7rem;
+		margin-top: 2rem;
 	}
+}
+
+@media(max-width: 768px) {
+	.carousel-item {
+		height: 16rem;
+	}
+}
+
+.nav-item {
+	padding-bottom: 15px;
 }
 
 .nav-item.active{
 	border-bottom-style: solid;
 	border-bottom: 5px solid #28a745;
-	padding-bottom: 15px;
 }
 
 .btn-verde{

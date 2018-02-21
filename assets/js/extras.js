@@ -14,4 +14,5 @@ function isEmpty(vlr, zero){
 
 function baseUrlApi(){
   return 'http://186.226.56.5:1111/';
+  // return 'http://localhost:8080/';
 }
