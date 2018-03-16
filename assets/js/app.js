@@ -231,6 +231,13 @@ app.controller('SimulatorController', function($scope, $http) {
 					width: 0,
 					total: 0
 				}
+			},
+			instalation: {
+				dimensions: {
+					height: 0,
+					width: 0,
+					total: 0
+				}
 			}
 		};
 		$scope.resetGettyImagesAPISearch();

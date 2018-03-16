@@ -172,9 +172,43 @@
 										</div>
 									</div>
 
-									<div class="row"
-										ng-if="(budget.local.dimensions.total / budget.material.dimensions.total) > 0">
-										<div class="col-sm-12">
+									<div class="row">
+										<div class="col-sm-6">
+											<h5 class="text-success mt-5 mb-5">
+												<span class="badge badge-pill badge-success">4</span>
+												Informe a área de instalação:
+											</h5>
+
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Altura (m)</label>
+														<input type="text" class="form-control text-right" ui-number-mask="2"
+															ng-keyup="calculateTotalDimension('instalation')"
+															ng-model="budget.instalation.dimensions.height">
+													</div>
+												</div>
+
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Largura (m)</label>
+														<input type="text" class="form-control text-right" ui-number-mask="2"
+															ng-keyup="calculateTotalDimension('instalation')"
+															ng-model="budget.instalation.dimensions.width">
+													</div>
+												</div>
+
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label class="control-label">Dimensão (m²)</label>
+														<input class="form-control text-right" disabled="disabled" 
+															value="{{ budget.instalation.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-sm-6" ng-if="(budget.local.dimensions.total / budget.material.dimensions.total) > 0">
 											<span>{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }} unidades necessárias de {{ budget.material.name }}</span>
 										</div>
 									</div>
@@ -439,6 +473,15 @@
 										<div class="row">
 											<div class="col-sm-6"></div>
 											<div class="col-sm-6">
+												<label class="control-label"><strong>Área de Instalação</strong></label>
+												<input class="form-control text-center" disabled="disabled" 
+													value="{{ budget.instalation.dimensions.total | NumberFormat : 2 : '.' : ',' }}m²">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6"></div>
+											<div class="col-sm-6">
 												<label class="control-label"><strong>Valor do m² p/ Impressão</strong></label>
 												<input class="form-control text-center" disabled="disabled" 
 													value="R$ {{ budget.material.cost | NumberFormat : 2 : ',' : '.' }}">
@@ -450,7 +493,7 @@
 											<div class="col-sm-6">
 												<label class="control-label"><strong>Valor da Impressão</strong></label>
 												<input class="form-control text-center" disabled="disabled" 
-													value="R$ {{ (budget.material.cost * budget.local.dimensions.total) | NumberFormat : 2 : ',' : '.' }}">
+													value="R$ {{ (budget.material.cost * budget.instalation.dimensions.total) | NumberFormat : 2 : ',' : '.' }}">
 											</div>
 										</div>
 									</div>
