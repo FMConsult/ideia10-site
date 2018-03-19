@@ -1,5 +1,6 @@
+<?php include('restrict.php'); ?>
 <!doctype html>
-<html lang="en" ng-app="idea10">
+<html lang="pt-br" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,8 +15,9 @@
 	<link href="../assets/bower_components/summernote/dist/summernote.css" rel="stylesheet">
 	<link href="../assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
+	<link href="../assets/css/carousel.css" rel="stylesheet">
 </head>
-<body ng-controller="ProjetosController">
+<body class="admin" ng-controller="ProjetosController">
 	<header>
 		<nav class="navbar">
 			<h4>IDEA10 ADMIN</h4>
@@ -143,15 +145,21 @@
 	  </div>
 	</div>
 
-	<script src="../assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
+	<script src="../assets/js/extras.js"></script>
+	
+	<script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
 	<script src="../assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../assets/bower_components/holderjs/holder.min.js"></script>
-	<script src="../assets/bower_components/instafeed.js/instafeed.min.js"></script>
-	<script src="../assets/bower_components/summernote/dist/summernote.min.js"></script>
+	<script src="../assets/bower_components/underscore/underscore-min.js"></script>
+	<script src="../assets/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
 
 	<script src="../assets/bower_components/angular/angular.js"></script>
 	<script src="../assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+	<script src="../assets/bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+	<script src="../assets/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="../assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	
 	<script src="../assets/js/app.js"></script>
 </body>

@@ -1,6 +1,44 @@
-var app = angular.module('idea10', ['summernote','ui.utils.masks','ui.bootstrap']);
+var app = angular.module('idea10', ['summernote','ui.utils.masks','ui.bootstrap'], function($httpProvider){
+	// Use x-www-form-urlencoded Content-Type
+	$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
-app.filter('NumberFormat', NumberFormat)
+	var param = function(obj) {
+		var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
+
+		for(name in obj) {
+			value = obj[name];
+
+			if(value instanceof Array) {
+				for(i=0; i < value.length; ++i) {
+					subValue = value[i];
+					fullSubName = name + '[' + i + ']';
+					innerObj = {};
+					innerObj[fullSubName] = subValue;
+					query += param(innerObj) + '&';
+				}
+			}
+			else if(value instanceof Object) {
+				for(subName in value) {
+					subValue = value[subName];
+					fullSubName = name + '[' + subName + ']';
+					innerObj = {};
+					innerObj[fullSubName] = subValue;
+					query += param(innerObj) + '&';
+				}
+			}
+			else if(value !== undefined && value !== null)
+				query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
+		}
+
+		return query.length ? query.substr(0, query.length - 1) : query;
+	};
+
+	$httpProvider.defaults.transformRequest = [function(data) {
+		return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
+	}];
+});
+
+app.filter('NumberFormat', NumberFormat);
 app.filter('DateFormat', DateFormat);
 
 function NumberFormat() {
@@ -73,6 +111,32 @@ function DateFormat() {
 			return pad(d.getDate())+'/'+pad(d.getMonth()+1)+'/'+d.getFullYear();
 	}
 };
+
+app.controller('LoginController', function($scope, $http){
+	$scope.doLogin = function() {
+		if(!isEmpty($scope.user) && (!isEmpty($scope.user.login) && !isEmpty($scope.user.password))) {
+			$http({
+				method: 'POST',
+				url: "register-login.php",
+				data: angular.copy($scope.user)
+			}).then(
+				function successCallback(response) {
+					if(response.status === 200)
+						window.location.href = "banner.php";
+				},
+				function errorCallback(response){
+					swal({
+						title: 'Desculpe!', 
+						text: response.data, 
+						type: (response.status == 404) ? 'warning' : 'error'
+					});
+				}
+			);
+		}
+		else
+			swal('Atenção!', 'Os campos login e senha não foram preenchidos corretamente!', 'warning');
+	}
+});
 
 app.controller('ProjetosController', function($scope, $http){
 	$scope.projeto = {};
@@ -170,6 +234,10 @@ app.controller('BannersController', function($scope, $http){
 	$scope.banner = {};
 	$scope.index = {};
 
+	$scope.baseUrlApi = function() {
+		return baseUrlApi();
+	}
+
 	$scope.saveBanner = function() {
 		$http({
 			method: 'POST',
@@ -210,6 +278,48 @@ app.controller('BannersController', function($scope, $http){
 
 			});
 	}
+
+	setTimeout(function(){
+		$("[type='file']").on('change', function(){
+			var file = this.files[0]; // get selected file
+			var reader = new FileReader();
+
+			$scope.fileModel = $(this).data().model; // get attribute model name
+			
+			if(isEmpty($scope.banner))
+				$scope.banner = {};
+
+			if(isEmpty($scope.banner[$scope.fileModel])) // validate if is empty
+				$scope.banner[$scope.fileModel] = {}; // create as object
+
+			// detect file type
+			var type = file.type.substring(file.type.indexOf('/')+1, file.type.length);
+			if(isEmpty(type))
+				type = file.name.substring((file.name.lastIndexOf('.')+1), file.name.length);
+
+			$scope.banner[$scope.fileModel].name = file.name; // file name
+			$scope.banner[$scope.fileModel].type = type; // file type
+			$scope.banner[$scope.fileModel].size = (file.size / 1024); // file size
+
+			// adjust file size string name
+			if($scope.banner[$scope.fileModel].size < 1024)
+				$scope.banner[$scope.fileModel].size = numberFormat($scope.banner[$scope.fileModel].size, 2, ',', '.') + ' KB';
+			else if($scope.banner[$scope.fileModel].size > 1024)
+				$scope.banner[$scope.fileModel].size = numberFormat($scope.banner[$scope.fileModel].size, 2, ',', '.') + ' MB';
+
+			// after loading file...
+			reader.onload = function (e) {
+				$scope.banner[$scope.fileModel].path = e.target.result; // get base64 string of file
+				$scope.banner[$scope.fileModel].updated = true;
+				setTimeout(function(){
+					$scope.$apply(); // apply changes in the screen
+				},1);
+			}
+
+			if(!isEmpty(file))
+				reader.readAsDataURL(file);
+		});
+	}, 10);
 
 	loadBanners();
 });
@@ -597,4 +707,42 @@ app.controller('SimulatorController', function($scope, $http) {
 	resetBudget();
 	loadMaterials();
 	loadImageCategories();
+});
+
+app.controller('ContactController', function($scope, $http){
+	$scope.sendContactEmail = function() {
+		$('#btn-send-email').button('toggle');
+		$scope.loading = true;
+		if(!isEmpty($scope.contact) && (!isEmpty($scope.contact.full_name) && !isEmpty($scope.contact.phone_number) && !isEmpty($scope.contact.email))) {
+			$http({
+				method: 'POST',
+				url: baseUrlApi() + 'contact/send/email',
+				data: JSON.stringify($scope.contact)
+			}).then(
+				function successCallback(response) {
+					$scope.contact = null;
+					swal({
+						title: 'Obrigado!', 
+						text: response.data, 
+						type: 'success'
+					});
+					$('#btn-send-email').button('toggle');
+					$scope.loading = false;
+				},
+				function errorCallback(response){
+					swal({
+						title: 'Desculpe!', 
+						text: response.data, 
+						type: (response.status == 404) ? 'warning' : 'error'
+					});
+					$('#btn-send-email').button('toggle');
+					$scope.loading = false;
+				}
+			);
+		}
+		else {
+			swal('Atenção!', 'Os campos Nome Completo, Telefone e E-mail não foram preenchidos corretamente!', 'warning');
+			$scope.loading = false;
+		}
+	}
 });

@@ -2,12 +2,11 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
+body:not(.admin) {
 	margin-top: 5rem;
 	padding-bottom: 3rem;
 	color: #5a5a5a;
 }
-
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -146,7 +145,7 @@ html {
 	box-sizing: border-box;
 }
 
-body {
+body:not(.admin) {
 	position: relative;
 	padding-bottom: 6rem;
 	min-height: 100%;
@@ -191,4 +190,9 @@ div.card-img-top.getty_image {
 
 .card.border.border-success {
 	padding: 5px;
+}
+
+th.text-middle,
+td.text-middle {
+	vertical-align: middle;
 }

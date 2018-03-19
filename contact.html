@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,6 +11,7 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
 	<link href="assets/css/carousel.css" rel="stylesheet">
@@ -54,7 +55,7 @@
 		<!-- START THE FEATURETTES -->
 		<hr class="featurette-divider">
 
-		<div class="row featurette">
+		<div class="row featurette" ng-controller="ContactController">
 			<div class="col-md-6">
 				<h2 class="featurette-heading" style="margin-top: 0px;">Gostou do resultado?<br><small class="text-muted">Fale com a gente</small></h2>
 				<p class="lead">Nossa equipe de projetos terá um enorme prazer em idealizar junto com você o material adequado e as melhores aplicações para a sua imagem ou paisagem.</p>
@@ -69,7 +70,7 @@
 					<div class="col-md-12">
 						<div class="form-group">
 							<label class="control-label">Nome completo:</label>
-							<input class="form-control" ng-model="contact.nome">
+							<input class="form-control" ng-model="contact.full_name">
 						</div>
 					</div>
 				</div>
@@ -78,7 +79,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="control-label">Telefone:</label>
-							<input class="form-control" ng-model="contact.telefone">
+							<input class="form-control" ng-model="contact.phone_number" ui-br-phone-number>
 						</div>
 					</div>
 
@@ -94,7 +95,7 @@
 					<div class="col-md-12">
 						<div class="form-group">
 							<label class="control-label">Observações:</label>
-							<textarea class="form-control" ng-model="contact.observacoes" rows="5"></textarea>
+							<textarea class="form-control" ng-model="contact.text_description" rows="5"></textarea>
 						</div>
 					</div>
 				</div>
@@ -104,9 +105,12 @@
 						<div class="form-group">
 							<label class="control-label">&nbsp;</label>
 							<div class="controls">
-								<button type="button" class="btn btn-primary float-right">
+								<button id="btn-send-email" type="button" 
+									class="btn btn-primary float-right"
+									ng-click="sendContactEmail()">
 									Enviar
 								</button>
+								<p ng-if="(loading)"><i class='fa fa-spin fa-spinner'></i> Aguarde, enviando mensagem...</p>
 							</div>
 						</div>
 					</div>
@@ -136,9 +140,22 @@
 		</div>						
 	</footer>
 
-	<script src="assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
+	<script src="assets/js/extras.js"></script>
+
+	<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="assets/bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
 	<script src="assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="assets/bower_components/holderjs/holder.min.js"></script>
+	<script src="assets/bower_components/underscore/underscore-min.js"></script>
+	<script src="assets/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
+
+	<script src="assets/bower_components/angular/angular.js"></script>
+	<script src="assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+	<script src="assets/bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+	<script src="assets/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	
+	<script src="assets/js/app.js"></script>
 </body>
 </html>

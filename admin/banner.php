@@ -1,4 +1,5 @@
- <!doctype html>
+<?php include('restrict.php'); ?>
+<!doctype html>
 <html lang="pt-br" ng-app="idea10">
 <head>
 	<meta charset="utf-8">
@@ -14,8 +15,9 @@
 	<link href="../assets/bower_components/summernote/dist/summernote.css" rel="stylesheet">
 	<link href="../assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
+	<link href="../assets/css/carousel.css" rel="stylesheet">
 </head>
-<body ng-controller="BannersController">
+<body class="admin" ng-controller="BannersController">
 	<header>
 		<nav class="navbar">
 			<h4>IDEA10 ADMIN</h4>
@@ -43,14 +45,14 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label class="control-label">Nome do Banner</label>
-								<input class="form-control" type="text" ng-model="banner.title">
+								<input class="form-control" type="text" ng-model="banner.name">
 							</div>
 						</div>
 
 						<div class="col-lg-5">
 							<div class="form-group">
 								<label class="control-label">Selecione o Arquivo</label>
-								<input class="form-control" type="file">
+								<input class="form-control" type="file" data-model="attachment">
 							</div>
 						</div>
 
@@ -58,9 +60,18 @@
 							<div class="form-group">
 								<label class="control-label">&nbsp;</label>
 								<div class="controls">
-									<button class="btn btn-success float-right">Salvar</button>
+									<button class="btn btn-success float-right"
+										ng-click="saveBanner()">
+										Salvar
+									</button>
 								</div>
 							</div>
+						</div>
+					</div>
+
+					<div class="row" ng-if="(banner.attachment)">
+						<div class="col-lg-12 text-center">
+							<img class="img-fluid img-thumbnail" src="{{ banner.attachment.path }}">
 						</div>
 					</div>
 				</form>
@@ -70,20 +81,21 @@
 		<table class="table table-bordered ">
 			<thead class="thead-light">
 				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">IMAGEM</th>
-					<th scope="col">DATA</th>
-					<th scope="col" alingh="center">AÇÕES</th>
+					<th class="text-middle" scope="col" width="200">IMAGEM</th>
+					<th class="text-middle" scope="col">NOME</th>
+					<th class="text-middle" scope="col" width="60">AÇÕES</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in banners">
-					<th scope="row">{{ item.id }}</th>
-					<td>{{ item.Image.name }}</td>
-					<td>{{ item.data }}</td>
-					<td class="text-center"><button type="button" class="btn btn-danger" ng-click="deleteBanner(item)">
-					EXCLUIR
-					</button>
+					<td class="text-middle">
+						<img class="img-fluid img-thumbnail" src="{{ baseUrlApi() + item.file.file_path }}">
+					</td>
+					<td class="text-middle">{{ item.name }}</td>
+					<td class="text-middle text-center">
+						<button type="button" class="btn btn-danger" ng-click="deleteBanner(item)">
+							Excluir
+						</button>
 					</td>
 				</tr>
 			</tbody>
@@ -91,15 +103,21 @@
 		</div>	
 	</div>
 
-	<script src="../assets/bower_components/jquery/dist/jquery.slim.min.js"></script>
+	<script src="../assets/js/extras.js"></script>
+	
+	<script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
 	<script src="../assets/bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../assets/bower_components/holderjs/holder.min.js"></script>
-	<script src="../assets/bower_components/instafeed.js/instafeed.min.js"></script>
-	<script src="../assets/bower_components/summernote/dist/summernote.min.js"></script>
+	<script src="../assets/bower_components/underscore/underscore-min.js"></script>
+	<script src="../assets/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
 
 	<script src="../assets/bower_components/angular/angular.js"></script>
 	<script src="../assets/bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+	<script src="../assets/bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+	<script src="../assets/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="../assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	
 	<script src="../assets/js/app.js"></script>
 </body>
