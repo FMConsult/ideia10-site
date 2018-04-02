@@ -1,0 +1,11 @@
+.guarda-chuva {
+			background-image: url('../img/guardachuvaIDEA10.png');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: top;
+			padding-top: 250px;
+		}
+
+		.guarda-chuva h3.title img {
+			max-width: 50px;
+		}
