@@ -205,12 +205,11 @@
 															value="{{ budget.instalation.dimensions.total | NumberFormat : 2 : ',' : '.' }}">
 													</div>
 												</div>
+													<div class="col-sm-6" ng-if="(budget.instalation.dimensions.total / budget.material.dimensions.total) > 0">
+														<span>{{ (budget.instalation.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }} unidades necessárias de {{ budget.material.name }}</span>
+													</div>
 											</div>
-										</div>
-
-										<div class="col-sm-6" ng-if="(budget.local.dimensions.total / budget.material.dimensions.total) > 0">
-											<span>{{ (budget.local.dimensions.total / budget.material.dimensions.total) | NumberFormat : 0 : ',' : '.' }} unidades necessárias de {{ budget.material.name }}</span>
-										</div>
+										</div>										
 									</div>
 
 									<div class="row mt-5">
