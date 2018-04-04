@@ -617,8 +617,21 @@ app.controller('SimulatorController', function($scope, $http) {
 			swal('Oops...', 'Você esqueceu de informar a largura da área de instalação!', 'warning');
 			return false;
 		}
+		
+		var a = $scope.budget.local.dimensions.width;
+		var b = $scope.budget.local.dimensions.height;
+		var dimensao_impressao = (a * b);
 
+		var c = $scope.budget.instalation.dimensions.width;
+		var d = $scope.budget.instalation.dimensions.height;
+		var dimensao_instalacao = (c * d);
+
+		if(dimensao_instalacao < dimensao_impressao){
+			swal('Oops...', 'o tamanho da área de impressão e maior que o tamanho da area de instalação!', 'warning');
+			return false;
+		} else {
 		$scope.step = 3;
+		}
 	}
 
 	$scope.selectImage = function(image){
