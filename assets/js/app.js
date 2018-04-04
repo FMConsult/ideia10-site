@@ -600,11 +600,20 @@ app.controller('SimulatorController', function($scope, $http) {
 		}
 
 		if(isEmpty($scope.budget.local.dimensions.height)){
-			swal('Oops...', 'Você esqueceu de informar a altura da área de instalação!', 'warning');
+			swal('Oops...', 'Você esqueceu de informar a altura da área de impressão!', 'warning');
 			return false;
 		}
 
 		if(isEmpty($scope.budget.local.dimensions.width)){
+			swal('Oops...', 'Você esqueceu de informar a largura da área de impressão!', 'warning');
+			return false;
+		}
+		if(isEmpty($scope.budget.instalation.dimensions.height)){
+			swal('Oops...', 'Você esqueceu de informar a altura da área de instalação!', 'warning');
+			return false;
+		}
+
+		if(isEmpty($scope.budget.instalation.dimensions.width)){
 			swal('Oops...', 'Você esqueceu de informar a largura da área de instalação!', 'warning');
 			return false;
 		}
