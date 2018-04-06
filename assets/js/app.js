@@ -626,7 +626,7 @@ app.controller('SimulatorController', function($scope, $http) {
 		var d = $scope.budget.instalation.dimensions.height;
 		var dimensao_instalacao = (c * d);
 
-		if(isEmpty(dimensao_instalacao < dimensao_impressao)){
+		if(dimensao_instalacao < dimensao_impressao){
 			swal('Oops...', 'o tamanho da área de impressão deve ser menor que o tamanho da area de instalação!', 'warning');
 			return false;
 		} else {
