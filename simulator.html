@@ -59,19 +59,19 @@
 					<div class="wizard">
 						<ul class="nav nav-wizard">
 							<li ng-class="{'active':(step == 1)}">
-								<a href="#step1" data-toggle="tab" ng-click="step = 1;">Escolha o material</a>
+								<a >Escolha o material</a>
 							</li>
 							<li ng-class="{'active':(step == 2)}" >
-								<a href="#step2" data-toggle="tab" ng-click="step = 2;">Escolha a dimensão</a>
+								<a>Escolha a dimensão</a>
 							</li>
 							<li ng-class="{'active':(step == 3)}">
-								<a href="#step3" data-toggle="tab" ng-click="step = 3;">Escolha a imagem</a>
+								<a>Escolha a imagem</a>
 							</li>
 							<li ng-class="{'active':(step == 4)}">
-								<a href="#step4" data-toggle="tab" ng-click="step = 4;">Visualizar orçamento</a>
+								<a>Visualizar orçamento</a>
 							</li>
 							<li ng-class="{'active':(step == 5)}">
-								<a href="#step5" data-toggle="tab" ng-click="step = 5;">Confirmação do pedido</a>
+								<a>Confirmação do pedido</a>
 							</li>
 						</ul>
 						<div class="tab-content">
@@ -214,10 +214,10 @@
 
 									<div class="row mt-5">
 										<div class="col-sm-12">
-											<button class="btn btn-success float-right"
-												ng-click="goToSelectImage()">
-												Escolher a imagem <i class="fa fa-angle-double-right"></i>
-											</button>
+											<div class="float-right">
+												<button class="btn btn-success" ng-click="goBack(1)"><i class="fa fa-angle-double-left"></i> Voltar </button>
+												<button class="btn btn-success" ng-click="goToSelectImage()"> Escolher a imagem <i class="fa fa-angle-double-right"></i></button>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -226,11 +226,21 @@
 							<div class="tab-pane" id="step3"
 								ng-class="{'active':(step == 3)}">
 								<div class="container">
-									<h3 class="text-success mt-5 mb-4" ng-if="(!budget.category)">
-										<span class="badge badge-pill badge-success">4</span>
-										Escolha uma categoria de imagens que deseja utilizar:
-									</h3>
-
+									<div class="row mt-5 mb-4" ng-if="(!budget.category)">
+										<div class="col-sm-10">
+											<h3 class="text-success">
+												<span class="badge badge-pill badge-success">4</span>
+												Escolha uma categoria de imagens que deseja utilizar:
+											</h3>
+										</div>
+										<div class="col-sm-2 text-right">
+											<button class="btn btn-success pull-right"
+												ng-click="goBack(2)">
+												<i class="fa fa-angle-double-left"></i>
+												Voltar
+											</button>
+										</div>
+									</div>
 									<div class="row mt-5 mb-4" ng-if="(budget.category)">
 										<div class="col-sm-8">
 											<h3 class="text-success">
@@ -239,10 +249,10 @@
 											</h3>
 										</div>
 										<div class="col-sm-4 text-right">
-											<button class="btn btn-secondary"
+											<button class="btn btn-success"
 												ng-click="budget.category = null;">
 												<i class="fa fa-angle-double-left"></i>
-												Voltar
+												Voltar para categorias
 											</button>
 										</div>
 									</div>
@@ -253,7 +263,7 @@
 											<input class="form-control" placeholder="Digite aqui o termo de imagem que deseja" 
 												ng-model="getty_images.search_options.actual.phrase" ng-enter="loadImagesByGettyImagesAPI()">
 											<div class="input-group-append">
-												<button class="btn btn-secondary" 
+												<button class="btn btn-success" 
 													ng-if="(getty_images.search_data.images)"
 													ng-click="getty_images.search_options.show = !getty_images.search_options.show">
 													<i class="fa fa-sliders"></i>
@@ -411,7 +421,7 @@
 										</h3>
 									</div>
 									<div class="col-sm-4 text-right">
-										<button class="btn btn-secondary"
+										<button class="btn btn-success"
 											ng-click="goBack(3);">
 											<i class="fa fa-angle-double-left"></i>
 											Voltar
@@ -619,19 +629,20 @@
 											</div>
 										</fieldset>
 
+
 										<div class="row">
-											<div class="col-sm-12 text-right">
-												<button class="btn btn-success"
-													ng-click="confirmBudgetRequest()">
-													<i class="fa fa-check-circle"></i> Enviar pedido
-												</button>
+											<div class="col-sm-12">
+												<div class="float-right">
+													<button class="btn btn-success" ng-click="goBack(3);"> <i class="fa fa-angle-double-left"></i> Voltar </button>
+													<button class="btn btn-success" ng-click="confirmBudgetRequest()"> <i class="fa fa-check-circle"></i> Enviar pedido </button>
+												</div>
 											</div>
 										</div>
 									</div>
 
 									<div class="col-sm-4">
 										<div class="card-img-top" 
-											style="background-image: url('http://via.placeholder.com/350x620?text=[Promo Banner]'); height: 620px;">
+											style="background-image: url('{{ budget.image.path }}');">
 										</div>
 									</div>
 								</div>
