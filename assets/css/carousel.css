@@ -130,14 +130,15 @@ body:not(.admin) {
 }
 .nav-custom{
 	padding-bottom: 0px !important;
+	    padding-left: 55px;
 }
 .nav-custom-div{
 	padding-top: 35px;
 }
 
 .brand-logo {
-	width: 200px;
-	padding: 25px;
+	width: 235px;
+	padding: 0px;
 }
 
 html {
