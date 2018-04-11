@@ -589,45 +589,24 @@ app.controller('SimulatorController', function($scope, $http) {
 	}
 
 	$scope.goToSelectImage = function(){
-		if(isEmpty($scope.budget.material.dimensions.height)){
-			swal('Oops...', 'Você esqueceu de informar a altura do(a) '+ $scope.budget.material.name +'!', 'warning');
-			return false;
-		}
-
-		if(isEmpty($scope.budget.material.dimensions.width)){
-			swal('Oops...', 'Você esqueceu de informar a largura do(a) '+ $scope.budget.material.name +'!', 'warning');
-			return false;
-		}
-
 		if(isEmpty($scope.budget.local.dimensions.height)){
-			swal('Oops...', 'Você esqueceu de informar a altura da área de impressão!', 'warning');
+			swal('Oops...', 'Você esqueceu de informar a altura do(a) '+ $scope.budget.local.name +'!', 'warning');
 			return false;
 		}
 
 		if(isEmpty($scope.budget.local.dimensions.width)){
-			swal('Oops...', 'Você esqueceu de informar a largura da área de impressão!', 'warning');
-			return false;
-		}
-		if(isEmpty($scope.budget.instalation.dimensions.height)){
-			swal('Oops...', 'Você esqueceu de informar a altura da área de instalação!', 'warning');
+			swal('Oops...', 'Você esqueceu de informar a largura do(a) '+ $scope.budget.local.name +'!', 'warning');
 			return false;
 		}
 
-		if(isEmpty($scope.budget.instalation.dimensions.width)){
-			swal('Oops...', 'Você esqueceu de informar a largura da área de instalação!', 'warning');
-			return false;
-		}
-		
 		var a = $scope.budget.local.dimensions.width;
 		var b = $scope.budget.local.dimensions.height;
 		var dimensao_impressao = (a * b);
 
-		var c = $scope.budget.instalation.dimensions.width;
-		var d = $scope.budget.instalation.dimensions.height;
-		var dimensao_instalacao = (c * d);
+		var dimensions_impressao_total = ('1,00');
 
-		if(dimensao_instalacao < dimensao_impressao){
-			swal('Oops...', 'o tamanho da área de impressão deve ser menor que o tamanho da area de instalação!', 'warning');
+		if(dimensao_impressao < dimensions_impressao_total){
+			swal('Oops...', 'o tamanho da área de impressão deve ser maior que 1 Metro Quadrado !', 'warning');
 			return false;
 		} else {
 		$scope.step = 3;
